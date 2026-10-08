@@ -1,0 +1,65 @@
+[
+  {
+    "id": "bedroom",
+    "officialArea": 14.8,
+    "beforeArea": 14.58218,
+    "area": 14.910361968,
+    "errorPercent": 0.7456889729729799
+  },
+  {
+    "id": "living",
+    "officialArea": 18.9,
+    "beforeArea": 19.05776,
+    "area": 19.002200744500005,
+    "errorPercent": 0.5407446798942228
+  },
+  {
+    "id": "study",
+    "officialArea": 11.1,
+    "beforeArea": 11.04021,
+    "area": 11.016226449200003,
+    "errorPercent": -0.7547166738738453
+  },
+  {
+    "id": "kitchen",
+    "officialArea": 12.9,
+    "beforeArea": 12.95605,
+    "area": 13.209750112396698,
+    "errorPercent": 2.4011636619899024
+  },
+  {
+    "id": "bathroom",
+    "officialArea": 3.9,
+    "beforeArea": 3.887,
+    "area": 3.8779309614000006,
+    "errorPercent": -0.5658727846153622
+  },
+  {
+    "id": "balcony-west",
+    "officialArea": 4.2,
+    "beforeArea": 4.22612,
+    "area": 4.077969618497097,
+    "errorPercent": -2.9054852738786607
+  },
+  {
+    "id": "balcony-east",
+    "officialArea": 4.3,
+    "beforeArea": 4.31768,
+    "area": 4.274262833949168,
+    "errorPercent": -0.5985387453681934
+  },
+  {
+    "id": "wc",
+    "officialArea": null,
+    "beforeArea": 1.82922,
+    "area": 1.8793420680000015,
+    "errorPercent": null
+  },
+  {
+    "id": "hall",
+    "officialArea": null,
+    "beforeArea": 13.16344,
+    "area": 12.631123558000006,
+    "errorPercent": null
+  }
+]

@@ -1,0 +1,107 @@
+TAP version 13
+# Subtest: room floors and reported areas follow actual inner wall faces
+ok 1 - room floors and reported areas follow actual inner wall faces
+  ---
+  duration_ms: 10.6535
+  ...
+# Subtest: changing wall thickness recalculates useful room contours and areas
+ok 2 - changing wall thickness recalculates useful room contours and areas
+  ---
+  duration_ms: 31.697791
+  ...
+# Subtest: balcony door glass has no opaque full leaf behind it
+ok 3 - balcony door glass has no opaque full leaf behind it
+  ---
+  duration_ms: 18.4925
+  ...
+# Subtest: bedroom window has the three glazed sections visible in P09
+ok 4 - bedroom window has the three glazed sections visible in P09
+  ---
+  duration_ms: 11.634875
+  ...
+# Subtest: all opening centres are true voids through their wall meshes
+ok 5 - all opening centres are true voids through their wall meshes
+  ---
+  duration_ms: 16.681792
+  ...
+# Subtest: all sixteen photo cameras start within their assigned rooms
+ok 6 - all sixteen photo cameras start within their assigned rooms
+  ---
+  duration_ms: 8.901042
+  ...
+# Subtest: photo camera eyes are outside all existing fixture volumes
+not ok 7 - photo camera eyes are outside all existing fixture volumes
+  ---
+  duration_ms: 1.101042
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:16:1'
+  failureType: 'testCodeFailure'
+  error: 'P06 inside existing-fridge'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:16:468)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: P04 looks toward the inner L kitchen corner visible in the photo
+not ok 8 - P04 looks toward the inner L kitchen corner visible in the photo
+  ---
+  duration_ms: 9.467667
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:17:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(p.target[0]>p.position[0])
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:17:137)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: kitchen cabinet fronts face the usable room
+not ok 9 - kitchen cabinet fronts face the usable room
+  ---
+  duration_ms: 0.167167
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:18:1'
+  failureType: 'testCodeFailure'
+  error: 'kitchen-run'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:18:242)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 6
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 185.885083

@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { area, pointInPolygon, measure, snap, footprint, polygonsOverlap, wallSolidAt, wallFootprint } from '../src/geometry.js';
+test('area uses concave interior polygon in metres',()=>{assert.equal(area([[0,0],[4,0],[4,1],[1,1],[1,3],[0,3]]),6);});
+test('room membership excludes concave cutout and includes boundary',()=>{const p=[[0,0],[4,0],[4,1],[1,1],[1,3],[0,3]];assert.equal(pointInPolygon([2,2],p),false);assert.equal(pointInPolygon([.5,2],p),true);assert.equal(pointInPolygon([0,1],p),true);});
+test('measurement includes true vertical distance and centimetres',()=>{assert.deepEqual(measure([0,0,0],[0,1.36,0]),{metres:1.36,centimetres:136});assert.equal(measure([0,0,0],[3,0,4]).metres,5);});
+test('grid snaps in world metres and may be disabled',()=>{assert.equal(snap(1.26,.1),1.3);assert.equal(snap(1.26,0),1.26);});
+test('rotated furniture preserves footprint dimensions',()=>{const p=footprint({width:2,depth:1,position:[3,0,4],rotation:90});assert.ok(Math.abs(Math.max(...p.map(v=>v[0]))-Math.min(...p.map(v=>v[0]))-1)<1e-8);assert.ok(Math.abs(area(p)-2)<1e-8);});
+test('SAT detects overlap but not separated or just touching objects',()=>{const a=[[0,0],[2,0],[2,1],[0,1]];assert.equal(polygonsOverlap(a,[[1,.5],[3,.5],[3,2],[1,2]]),true);assert.equal(polygonsOverlap(a,[[2,0],[3,0],[3,1],[2,1]]),false);});
+test('door and window are real voids with sill/lintel retained',()=>{const wall={a:[0,0],b:[4,0],thickness:.2};const holes=[{position:1,width:.8,height:2.1,sillHeight:0},{position:3,width:1,height:1.2,sillHeight:.9}];assert.equal(wallSolidAt(wall,holes,[1,1,0],2.7),false);assert.equal(wallSolidAt(wall,holes,[1,2.4,0],2.7),true);assert.equal(wallSolidAt(wall,holes,[3,.3,0],2.7),true);assert.equal(wallSolidAt(wall,holes,[3,1.4,0],2.7),false);assert.ok(area(wallFootprint(wall))>.79);});

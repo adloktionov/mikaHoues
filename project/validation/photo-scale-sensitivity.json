@@ -1,0 +1,83 @@
+{
+  "status": "Exploratory, not calibrated; sensitivity intervals are not statistical confidence intervals",
+  "photo": "P09",
+  "mattressMetres": [
+    1.4,
+    2.0
+  ],
+  "cornersPixels": [
+    [
+      104.0,
+      652.0
+    ],
+    [
+      430.0,
+      576.0
+    ],
+    [
+      674.0,
+      704.0
+    ],
+    [
+      111.0,
+      1098.0
+    ]
+  ],
+  "fourthCornerExtrapolated": true,
+  "results": [
+    {
+      "focalPx": 440,
+      "assumedMattressHeadToWallGap": 0.1,
+      "roomWindowWallWidth": 3.419,
+      "windowWidth": 1.857
+    },
+    {
+      "focalPx": 440,
+      "assumedMattressHeadToWallGap": 0.3,
+      "roomWindowWallWidth": 3.641,
+      "windowWidth": 1.978
+    },
+    {
+      "focalPx": 440,
+      "assumedMattressHeadToWallGap": 0.5,
+      "roomWindowWallWidth": 3.864,
+      "windowWidth": 2.098
+    },
+    {
+      "focalPx": 460,
+      "assumedMattressHeadToWallGap": 0.1,
+      "roomWindowWallWidth": 3.36,
+      "windowWidth": 1.829
+    },
+    {
+      "focalPx": 460,
+      "assumedMattressHeadToWallGap": 0.3,
+      "roomWindowWallWidth": 3.578,
+      "windowWidth": 1.947
+    },
+    {
+      "focalPx": 460,
+      "assumedMattressHeadToWallGap": 0.5,
+      "roomWindowWallWidth": 3.797,
+      "windowWidth": 2.066
+    },
+    {
+      "focalPx": 480,
+      "assumedMattressHeadToWallGap": 0.1,
+      "roomWindowWallWidth": 3.301,
+      "windowWidth": 1.8
+    },
+    {
+      "focalPx": 480,
+      "assumedMattressHeadToWallGap": 0.3,
+      "roomWindowWallWidth": 3.515,
+      "windowWidth": 1.917
+    },
+    {
+      "focalPx": 480,
+      "assumedMattressHeadToWallGap": 0.5,
+      "roomWindowWallWidth": 3.73,
+      "windowWidth": 2.033
+    }
+  ]
+}

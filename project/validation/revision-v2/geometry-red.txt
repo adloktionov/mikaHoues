@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: combined bathroom has one entrance and no obsolete separating wall or duplicate toilet
+not ok 1 - combined bathroom has one entrance and no obsolete separating wall or duplicate toilet
+  ---
+  duration_ms: 1.597542
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/revision-v2/project/tests/revision-v2.test.js:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    2 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/revision-v2/project/tests/revision-v2.test.js:6:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    node:internal/test_runner/harness:255:12
+    node:internal/process/task_queues:140:7
+    AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    AsyncResource.runMicrotask (node:internal/process/task_queues:137:8)
+  ...
+# Subtest: bathroom left/front/right layout follows the entrance direction
+not ok 2 - bathroom left/front/right layout follows the entrance direction
+  ---
+  duration_ms: 0.148166
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/revision-v2/project/tests/revision-v2.test.js:12:1'
+  failureType: 'testCodeFailure'
+  error: 'tub must be left (+X) when entering toward +Z'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/revision-v2/project/tests/revision-v2.test.js:14:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: kitchen has one plain window wall, oven adjacent to south run and empty central aisle
+not ok 3 - kitchen has one plain window wall, oven adjacent to south run and empty central aisle
+  ---
+  duration_ms: 0.117459
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/revision-v2/project/tests/revision-v2.test.js:18:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    3 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 3
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/revision-v2/project/tests/revision-v2.test.js:19:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: door leaves are hidden but all door openings remain real mesh voids
+not ok 4 - door leaves are hidden but all door openings remain real mesh voids
+  ---
+  duration_ms: 38.777
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/revision-v2/project/tests/revision-v2.test.js:27:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    bedroom-door has a visible door leaf
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/revision-v2/project/tests/revision-v2.test.js:29:120)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: entrance corridor keeps confirmed structural walls and has no door leaf obstruction
+ok 5 - entrance corridor keeps confirmed structural walls and has no door leaf obstruction
+  ---
+  duration_ms: 0.145541
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 1
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 111.350916

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "bedroom",
+    "label": "Спальня",
+    "officialArea": 14.8,
+    "calculatedArea": 14.910361968,
+    "errorPercent": 0.7456889729729799,
+    "areaBasis": "Inner wall faces; door thresholds closed"
+  },
+  {
+    "id": "living",
+    "label": "Большая комната",
+    "officialArea": 18.9,
+    "calculatedArea": 19.002200744500005,
+    "errorPercent": 0.5407446798942228,
+    "areaBasis": "Inner wall faces; door thresholds closed"
+  },
+  {
+    "id": "study",
+    "label": "Комната с диваном",
+    "officialArea": 11.1,
+    "calculatedArea": 11.016226449200003,
+    "errorPercent": -0.7547166738738453,
+    "areaBasis": "Inner wall faces; door thresholds closed"
+  },
+  {
+    "id": "kitchen",
+    "label": "Кухня",
+    "officialArea": 12.9,
+    "calculatedArea": 12.900000000000002,
+    "errorPercent": 2.220446049250313e-14,
+    "areaBasis": "Inner wall faces; door thresholds closed"
+  },
+  {
+    "id": "bathroom",
+    "label": "Совмещённый санузел",
+    "officialArea": null,
+    "calculatedArea": 6.007455850800001,
+    "errorPercent": null,
+    "areaBasis": "Inner wall faces; door thresholds closed"
+  },
+  {
+    "id": "balcony-west",
+    "label": "Лоджия 4,2",
+    "officialArea": 4.2,
+    "calculatedArea": 4.077969618497097,
+    "errorPercent": -2.9054852738786607,
+    "areaBasis": "Inner wall faces; door thresholds closed"
+  },
+  {
+    "id": "balcony-east",
+    "label": "Лоджия 4,3",
+    "officialArea": 4.3,
+    "calculatedArea": 4.274262833949168,
+    "errorPercent": -0.5985387453681934,
+    "areaBasis": "Inner wall faces; door thresholds closed"
+  },
+  {
+    "id": "hall",
+    "label": "Прихожая и коридор",
+    "officialArea": null,
+    "calculatedArea": 12.631123558000006,
+    "errorPercent": null,
+    "areaBasis": "Inner wall faces; door thresholds closed"
+  }
+]

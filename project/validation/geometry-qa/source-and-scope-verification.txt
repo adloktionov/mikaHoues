@@ -1,0 +1,7 @@
+17/17 original hashes unchanged.
+26 wall centerlines/thicknesses unchanged.
+19 opening positions/dimensions unchanged.
+Movable furniture and materials unchanged.
+Bedroom pane count and kitchen door glazing corrected.
+Data regeneration byte-identical.
+Snapshot verifier rejects wall drift and corrupted snapshots; permits furniture/material data changes.

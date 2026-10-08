@@ -1,0 +1,39 @@
+{
+  "version": "Architecture v2",
+  "createdAt": "2026-10-01T07:35:03.200Z",
+  "units": "metres",
+  "scope": "Baseline geometry, finish extents and estimated cameras, not a measured survey. Runtime overrides and movable furniture are outside the baseline.",
+  "geometryFiles": [
+    "src/architecture.js",
+    "src/room-boundaries.js",
+    "src/geometry.js",
+    "src/furniture.js",
+    "src/finishes.js"
+  ],
+  "hashes": {
+    "architecture-data.json": "4a3866be0d7d773b602ea81c2a7bce010b17f7ebb082e91c15817c09a0c30ce1",
+    "geometry.json": "11dce5efa0d7bdbb28fa87f5076005e0d0c74e20813197312a3b6dca75d5b4ff",
+    "src/architecture.js": "072de2de1136fc678a98db88c1c101cc26d723d11fa3c42b876dd36e63bb0aa4",
+    "src/room-boundaries.js": "357fdae34d6f763c9c9b3fd402d17ea1aa28d5d4fac8a3dc12240fe970e61878",
+    "src/geometry.js": "4718b69b504ea5c46c0484fda76f5df647f4c8a1883488f7ec6975f7f2bbf75c",
+    "src/furniture.js": "6f5aa4f6d2492f4d2ba93412b58a79be5dad5ee9acc88c2189264815133471fa",
+    "src/finishes.js": "c0d75bbc7343738dd84c9d0d6a419909bec4865205a364925d6e2554bf93f8ed",
+    "src/viewer.js": "f6d5e2eb311d6f20551062cc62b18a6222af8fae0cf23035ae0ce8285348e3e8",
+    "package.json": "b058559317e2fd6b6bd8c34e605ca9ed94acf11737bf57e6ceb1d925b748bba4",
+    "package-lock.json": "baff44fe499ff652bd625a56f254d8040727b4e3ca001c4a0356411490e645ef",
+    "data/reconstruction-source.json": "677c34e8724e5173df99d87057426d09f940516fa378ad4360e790dd2d459e1a",
+    "data/photo-qa.json": "200746ccd2d7a558880f8c322dafeec0e87ee77e79659fcf8846d18b7ddc17d1",
+    "data/photo-manifest.json": "85946470324defebacaabcf658ee5526a66ec8c3ded72d72a3d038cc4568449d",
+    "scripts/generate-data.py": "13d321bf7605749fb8ae2a1f33122092ef5281f353a8a69b7f6b3131f5bc1dd5",
+    "scripts/reconcile-rooms.js": "c0936c5404b561a95b3846d7034b09dc1f6da57ae0fa3fd7ef2d990a2b2babf9",
+    "validation/source-hashes.json": "fd9e8f18f0b65e07c5de9c1d2eff9249538dca60c45f58c31b0367169b37536c",
+    "validation/geometry-qa/area-comparison.json": "61ab299c0ad273415cc6db64ddf31adfa352f6d0bd1e46055bc020a7f0a4a1c5",
+    "validation/geometry-qa/wall-and-opening-dimensions.csv": "73fde43e7810da5a928a491551155b234559db8355e0268cef16e11d6d93161b",
+    "geometry-qa-report.md": "1aea10f3b26130a5a95fb14e42ac46afda9e5cc82c9ac0b01c02e123559317b9",
+    "scripts/apply-revision-v2.js": "59a2ae58d2f996a78a002c428a26f9fbf4bd47ada2bbff81b5231a99128e8a8c",
+    "scripts/revision-v2-report.py": "b88969f813d05ea5162ce02fa164ebd116f57b9454ad790bfe6ee30e38dcb3dc",
+    "revision-v2-report.md": "aff853eabdced643a42e25cd43a35932adee9ce7b4239b7586a1c54b42937d3a",
+    "validation/revision-v2/area-comparison.json": "52c2955302c2e319a39761562b1300de35788399cdc51060443937d504fae02f",
+    "validation/revision-v2/wall-and-opening-dimensions.csv": "03484b5e7983e99a022f3af6f676df5b474f365963da54edcc7ccb1f3f7edcd7"
+  }
+}

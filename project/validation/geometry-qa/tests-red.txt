@@ -1,0 +1,111 @@
+TAP version 13
+# Subtest: room floors and reported areas follow actual inner wall faces
+not ok 1 - room floors and reported areas follow actual inner wall faces
+  ---
+  duration_ms: 9.024125
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:9:1'
+  failureType: 'testCodeFailure'
+  error: 'bedroom: room/floor vs wall face differ by 0.425585 m²'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    assertRoomConsistency (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:8:357)
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:9:75)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    node:internal/test_runner/harness:255:12
+    node:internal/process/task_queues:140:7
+    AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    AsyncResource.runMicrotask (node:internal/process/task_queues:137:8)
+  ...
+# Subtest: changing wall thickness recalculates useful room contours and areas
+not ok 2 - changing wall thickness recalculates useful room contours and areas
+  ---
+  duration_ms: 30.151292
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:10:1'
+  failureType: 'testCodeFailure'
+  error: 'bedroom: room/floor vs wall face differ by 0.659692 m²'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    assertRoomConsistency (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:8:357)
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:10:162)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: balcony door glass has no opaque full leaf behind it
+not ok 3 - balcony door glass has no opaque full leaf behind it
+  ---
+  duration_ms: 15.497708
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:11:1'
+  failureType: 'testCodeFailure'
+  error: 'west-balcony-door is blocked by an opaque mesh'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:11:617)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: bedroom window has the three glazed sections visible in P09
+not ok 4 - bedroom window has the three glazed sections visible in P09
+  ---
+  duration_ms: 11.2025
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 2
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/architecture-qa.test.js:12:407)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: all opening centres are true voids through their wall meshes
+ok 5 - all opening centres are true voids through their wall meshes
+  ---
+  duration_ms: 16.049125
+  ...
+# Subtest: all sixteen photo cameras start within their assigned rooms
+ok 6 - all sixteen photo cameras start within their assigned rooms
+  ---
+  duration_ms: 24.279791
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 2
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 204.949

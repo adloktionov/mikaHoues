@@ -1,0 +1,32 @@
+{
+  "version": "Architecture v1",
+  "createdAt": "2026-09-30T07:47:03.821Z",
+  "units": "metres",
+  "scope": "Baseline geometry and estimated cameras, not a measured survey. Runtime overrides and movable furniture are outside the baseline.",
+  "geometryFiles": [
+    "src/architecture.js",
+    "src/room-boundaries.js",
+    "src/geometry.js"
+  ],
+  "hashes": {
+    "architecture-data.json": "bacb227e3809abfb9cc6328190a758b71132381ccb4184dae4247b9f360f7417",
+    "geometry.json": "950844b909bbfde60b85a86412e3aa613f8a8b0cb53474b044c200c3a628f45d",
+    "src/architecture.js": "f023297fe5421f9aecf648609bd80e3afc0b564066ef8dc526f8b430ecbfa39c",
+    "src/room-boundaries.js": "357fdae34d6f763c9c9b3fd402d17ea1aa28d5d4fac8a3dc12240fe970e61878",
+    "src/geometry.js": "4718b69b504ea5c46c0484fda76f5df647f4c8a1883488f7ec6975f7f2bbf75c",
+    "src/furniture.js": "19a14904331ad43ed0efd3a2143ab7b595fde42a6fb80297596484c205c00c19",
+    "src/viewer.js": "f8dd67165b87323c69dcda918b7520baa99a2972b27a265d5fe3fe961f075f94",
+    "src/finishes.js": "c0d75bbc7343738dd84c9d0d6a419909bec4865205a364925d6e2554bf93f8ed",
+    "package.json": "b058559317e2fd6b6bd8c34e605ca9ed94acf11737bf57e6ceb1d925b748bba4",
+    "package-lock.json": "baff44fe499ff652bd625a56f254d8040727b4e3ca001c4a0356411490e645ef",
+    "data/reconstruction-source.json": "677c34e8724e5173df99d87057426d09f940516fa378ad4360e790dd2d459e1a",
+    "data/photo-qa.json": "200746ccd2d7a558880f8c322dafeec0e87ee77e79659fcf8846d18b7ddc17d1",
+    "data/photo-manifest.json": "85946470324defebacaabcf658ee5526a66ec8c3ded72d72a3d038cc4568449d",
+    "scripts/generate-data.py": "96c6ac937b1701933d29589d56dab0327cd7345a285fcfc5243b80b8e43e0adf",
+    "scripts/reconcile-rooms.js": "c0936c5404b561a95b3846d7034b09dc1f6da57ae0fa3fd7ef2d990a2b2babf9",
+    "validation/source-hashes.json": "fd9e8f18f0b65e07c5de9c1d2eff9249538dca60c45f58c31b0367169b37536c",
+    "validation/geometry-qa/area-comparison.json": "61ab299c0ad273415cc6db64ddf31adfa352f6d0bd1e46055bc020a7f0a4a1c5",
+    "validation/geometry-qa/wall-and-opening-dimensions.csv": "73fde43e7810da5a928a491551155b234559db8355e0268cef16e11d6d93161b",
+    "geometry-qa-report.md": "1aea10f3b26130a5a95fb14e42ac46afda9e5cc82c9ac0b01c02e123559317b9"
+  }
+}

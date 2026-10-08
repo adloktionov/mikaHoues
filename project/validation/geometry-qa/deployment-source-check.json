@@ -1,0 +1,107 @@
+[
+  {
+    "path": "geometry-qa-report.md",
+    "targetExists": false,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "dimension-audit.md",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "reconstruction-notes.md",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "README.md",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "package.json",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "geometry-qa.html",
+    "targetExists": false,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "reconstruction-report.md",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "tests/architecture-qa.test.js",
+    "targetExists": false,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "tests/interaction.test.js",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "public/references/plan-overlay.svg",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "scripts/architecture-version.js",
+    "targetExists": false,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "scripts/reconcile-rooms.js",
+    "targetExists": false,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "scripts/geometry-qa-report.py",
+    "targetExists": false,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "scripts/generate-data.py",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "data/photo-qa.json",
+    "targetExists": false,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "data/apartment-data.json",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "src/styles.css",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "src/interaction.js",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "src/room-boundaries.js",
+    "targetExists": false,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "src/main.js",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  },
+  {
+    "path": "src/architecture.js",
+    "targetExists": true,
+    "unchangedSincePriorStage": true
+  }
+]

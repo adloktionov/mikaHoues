@@ -1,0 +1,49 @@
+TAP version 13
+# Subtest: rotate and measure clicks in furniture mode are not consumed by drag
+ok 1 - rotate and measure clicks in furniture mode are not consumed by drag
+  ---
+  duration_ms: 0.539208
+  ...
+# Subtest: drag remains serializable even beyond visible scene or near horizon
+ok 2 - drag remains serializable even beyond visible scene or near horizon
+  ---
+  duration_ms: 0.298875
+  ...
+# Subtest: adding outside rooms uses an interior fallback independent of polygon winding
+not ok 3 - adding outside rooms uses an interior fallback independent of polygon winding
+  ---
+  duration_ms: 4.260791
+  location: '/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/interaction.test.js:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + [
+    +   'Пересечение со стеной'
+    + ]
+    - []
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'Пересечение со стеной'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/michaelpilikian/Documents/Codex/2026-09-29/x20/work/geometry-qa/project/tests/interaction.test.js:13:10)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 2
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 46.013833

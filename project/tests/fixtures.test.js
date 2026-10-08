@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {footprint,polygonsOverlap,wallFootprint} from '../src/geometry.js';
+const data=JSON.parse(readFileSync(new URL('../data/apartment-data.json',import.meta.url)));
+test('fixed fixtures do not physically overlap each other',()=>{const bad=[];for(let i=0;i<data.fixedFurniture.length;i++)for(let j=i+1;j<data.fixedFurniture.length;j++){const a=data.fixedFurniture[i],b=data.fixedFurniture[j];if(a.position[1]<b.position[1]+b.height-1e-5&&b.position[1]<a.position[1]+a.height-1e-5&&polygonsOverlap(footprint(a),footprint(b)))bad.push(a.id+' / '+b.id);}assert.deepEqual(bad,[]);});
+test('fixed fixtures do not penetrate solid walls',()=>{const bad=[];for(const f of data.fixedFurniture.filter(f=>f.category!=='light'))for(const w of data.walls)if(polygonsOverlap(footprint(f),wallFootprint(w)))bad.push(f.id+' / '+w.id);assert.deepEqual(bad,[]);});

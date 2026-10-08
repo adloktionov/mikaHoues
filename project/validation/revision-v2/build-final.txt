@@ -1,0 +1,15 @@
+
+> apartment-planner@1.0.0 build
+> vite build
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 27 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.85 kB │ gzip:   0.55 kB
+dist/assets/index-DWi5W08i.css     19.28 kB │ gzip:   5.10 kB
+dist/assets/polygons-B4HvDXQ4.js   25.89 kB │ gzip:   8.15 kB
+dist/assets/index-O18AQSTy.js     173.58 kB │ gzip:  51.06 kB
+dist/assets/three-Ce99dnOJ.js     564.93 kB │ gzip: 144.99 kB
+✓ built in 851ms

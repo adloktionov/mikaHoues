@@ -1,0 +1,437 @@
+{
+  "id": "original",
+  "name": "Исходная квартира",
+  "createdAt": "2026-10-01T10:00:00.000Z",
+  "architectureVersion": "Architecture v3",
+  "architectureSource": "apartment-data.json",
+  "architectureDataSha256": "e4db86c01cd2efc6da199f9cf7984c553cb320b1ee783924f6eb8d622c4b1244",
+  "materials": {
+    "wall": "#ede9df",
+    "wood": "#9f7653",
+    "tile": "#d4d6ca",
+    "hallWall": "#e1dca3",
+    "finishes": [
+      {
+        "wall": "hall-east",
+        "side": 1,
+        "style": "hall"
+      },
+      {
+        "wall": "study-east",
+        "side": -1,
+        "style": "hall"
+      },
+      {
+        "wall": "entry",
+        "side": -1,
+        "style": "hall"
+      },
+      {
+        "wall": "bedroom-living",
+        "side": 1,
+        "style": "bedroom"
+      },
+      {
+        "wall": "bedroom-west",
+        "side": -1,
+        "style": "bedroom"
+      },
+      {
+        "wall": "bath-east",
+        "side": 1,
+        "style": "tile"
+      },
+      {
+        "wall": "west-loggia-front",
+        "side": -1,
+        "style": "balcony"
+      },
+      {
+        "wall": "west-loggia-diagonal",
+        "side": 1,
+        "style": "balcony"
+      },
+      {
+        "wall": "east-loggia-front",
+        "side": 1,
+        "style": "balcony"
+      },
+      {
+        "wall": "north",
+        "side": 1,
+        "style": "bedroom",
+        "start": 0,
+        "end": 4.57381
+      },
+      {
+        "wall": "north",
+        "side": 1,
+        "style": "wallpaper",
+        "start": 4.57381,
+        "end": 10.33131
+      },
+      {
+        "wall": "kitchen-east",
+        "side": -1,
+        "style": "hall",
+        "start": 0,
+        "end": 1.5735399999999995
+      },
+      {
+        "wall": "entry",
+        "side": 1,
+        "style": "tile",
+        "start": 0,
+        "end": 2.96854
+      },
+      {
+        "wall": "south",
+        "side": -1,
+        "style": "tile",
+        "start": 3.604344347946013,
+        "end": 6.5728843479460135
+      },
+      {
+        "wall": "kitchen-east",
+        "side": -1,
+        "style": "tile",
+        "start": 1.5735399999999995,
+        "end": 3.994729999999999
+      }
+    ]
+  },
+  "parameters": {
+    "ceilingHeight": 2.7,
+    "doorHeight": 2.1,
+    "windowHeight": 1.45,
+    "sillHeight": 0.85,
+    "wallThicknessFactor": 1
+  },
+  "layout": {
+    "version": 1,
+    "objects": [
+      {
+        "id": "existing-bed",
+        "name": "Кровать · матрас 140×200",
+        "category": "bed",
+        "width": 1.46,
+        "depth": 2.08,
+        "height": 0.85,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Матрас 140 × 200 см — подтверждён пользователем. Наружный каркас 146 × 208 × 85 см и толщина матраса 18 см — допущения, требуют замера.",
+        "color": "#e2dccc",
+        "dimensionStatus": "Estimated",
+        "mattress": {
+          "width": 1.4,
+          "depth": 2,
+          "height": 0.18,
+          "status": "Confirmed",
+          "confidence": "HIGH",
+          "heightStatus": "Estimated",
+          "source": "Размер матраса сообщён пользователем 2026-09-30"
+        },
+        "catalogueId": "bed",
+        "position": [
+          1.41616,
+          0,
+          2.80514
+        ],
+        "rotation": 90,
+        "room": "bedroom",
+        "visible": true
+      },
+      {
+        "id": "existing-low",
+        "name": "Низкая тумба",
+        "category": "cabinet",
+        "width": 1.6,
+        "depth": 0.4,
+        "height": 0.45,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#aca69d",
+        "dimensionStatus": "Estimated",
+        "catalogueId": "low-cabinet",
+        "position": [
+          1.83592,
+          0,
+          0.57303
+        ],
+        "rotation": 0,
+        "room": "bedroom",
+        "visible": true
+      },
+      {
+        "id": "existing-sofa",
+        "name": "Серый диван",
+        "category": "sofa",
+        "width": 2.2,
+        "depth": 0.9,
+        "height": 0.85,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#68716d",
+        "dimensionStatus": "Estimated",
+        "catalogueId": "sofa",
+        "position": [
+          1.50182,
+          0,
+          4.31208
+        ],
+        "rotation": 0,
+        "room": "study",
+        "visible": true
+      },
+      {
+        "id": "existing-dresser",
+        "name": "Белый комод",
+        "category": "dresser",
+        "width": 0.8,
+        "depth": 0.45,
+        "height": 1,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#eeede7",
+        "dimensionStatus": "Estimated",
+        "catalogueId": "dresser",
+        "position": [
+          0.69698,
+          0,
+          6.9955
+        ],
+        "rotation": 180,
+        "room": "study",
+        "visible": true
+      },
+      {
+        "id": "existing-wardrobe",
+        "name": "Шкаф",
+        "category": "wardrobe",
+        "width": 1.8,
+        "depth": 0.6,
+        "height": 2.3,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#dbd6c7",
+        "dimensionStatus": "Estimated",
+        "catalogueId": "wardrobe",
+        "position": [
+          5.7209,
+          0,
+          0.54365
+        ],
+        "rotation": 0,
+        "room": "living",
+        "visible": true
+      },
+      {
+        "id": "existing-table",
+        "name": "Обеденный стол",
+        "category": "table",
+        "width": 0.8,
+        "depth": 0.6,
+        "height": 0.75,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#dfd5c3",
+        "dimensionStatus": "Estimated",
+        "catalogueId": "table",
+        "position": [
+          -1.17,
+          0,
+          7.9
+        ],
+        "rotation": 0,
+        "room": "kitchen",
+        "visible": true
+      },
+      {
+        "id": "existing-chair-1",
+        "name": "Стул",
+        "category": "chair",
+        "width": 0.48,
+        "depth": 0.52,
+        "height": 0.87,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#b39b94",
+        "dimensionStatus": "Estimated",
+        "catalogueId": "chair",
+        "position": [
+          -1.87,
+          0,
+          7.95
+        ],
+        "rotation": 90,
+        "room": "kitchen",
+        "visible": true
+      },
+      {
+        "id": "existing-chair-2",
+        "name": "Стул",
+        "category": "chair",
+        "width": 0.48,
+        "depth": 0.52,
+        "height": 0.87,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#b39b94",
+        "dimensionStatus": "Estimated",
+        "catalogueId": "chair",
+        "position": [
+          -0.47,
+          0,
+          7.95
+        ],
+        "rotation": 270,
+        "room": "kitchen",
+        "visible": true
+      },
+      {
+        "id": "existing-fridge",
+        "name": "Холодильник",
+        "category": "fridge",
+        "width": 0.6,
+        "depth": 0.65,
+        "height": 1.95,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#e3e5df",
+        "dimensionStatus": "Estimated",
+        "catalogueId": "fridge",
+        "position": [
+          0.6,
+          0,
+          7.895
+        ],
+        "rotation": 0,
+        "room": "kitchen",
+        "visible": true
+      }
+    ],
+    "catalogue": [
+      {
+        "id": "bed",
+        "name": "Кровать · матрас 140×200",
+        "category": "bed",
+        "width": 1.46,
+        "depth": 2.08,
+        "height": 0.85,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Матрас 140 × 200 см — подтверждён пользователем. Наружный каркас 146 × 208 × 85 см и толщина матраса 18 см — допущения, требуют замера.",
+        "color": "#e2dccc",
+        "dimensionStatus": "Estimated",
+        "mattress": {
+          "width": 1.4,
+          "depth": 2.0,
+          "height": 0.18,
+          "status": "Confirmed",
+          "confidence": "HIGH",
+          "heightStatus": "Estimated",
+          "source": "Размер матраса сообщён пользователем 2026-09-30"
+        }
+      },
+      {
+        "id": "sofa",
+        "name": "Серый диван",
+        "category": "sofa",
+        "width": 2.2,
+        "depth": 0.9,
+        "height": 0.85,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#68716d",
+        "dimensionStatus": "Estimated"
+      },
+      {
+        "id": "wardrobe",
+        "name": "Шкаф",
+        "category": "wardrobe",
+        "width": 1.8,
+        "depth": 0.6,
+        "height": 2.3,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#dbd6c7",
+        "dimensionStatus": "Estimated"
+      },
+      {
+        "id": "dresser",
+        "name": "Белый комод",
+        "category": "dresser",
+        "width": 0.8,
+        "depth": 0.45,
+        "height": 1,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#eeede7",
+        "dimensionStatus": "Estimated"
+      },
+      {
+        "id": "low-cabinet",
+        "name": "Низкая тумба",
+        "category": "cabinet",
+        "width": 1.6,
+        "depth": 0.4,
+        "height": 0.45,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#aca69d",
+        "dimensionStatus": "Estimated"
+      },
+      {
+        "id": "table",
+        "name": "Обеденный стол",
+        "category": "table",
+        "width": 0.8,
+        "depth": 0.6,
+        "height": 0.75,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#dfd5c3",
+        "dimensionStatus": "Estimated"
+      },
+      {
+        "id": "chair",
+        "name": "Стул",
+        "category": "chair",
+        "width": 0.48,
+        "depth": 0.52,
+        "height": 0.87,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#b39b94",
+        "dimensionStatus": "Estimated"
+      },
+      {
+        "id": "fridge",
+        "name": "Холодильник",
+        "category": "fridge",
+        "width": 0.6,
+        "depth": 0.65,
+        "height": 1.95,
+        "model": null,
+        "thumbnail": null,
+        "notes": "Габариты оценены по фото; замените реальным замером.",
+        "color": "#e3e5df",
+        "dimensionStatus": "Estimated"
+      }
+    ]
+  }
+}

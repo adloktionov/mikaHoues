@@ -1,0 +1,2629 @@
+{
+  "schemaVersion": 1,
+  "apartment": {
+    "label": "Квартира · 76,4 м²",
+    "officialTotalArea": 76.4,
+    "officialLivingArea": 44.8,
+    "roomCount": 3,
+    "units": "metres",
+    "coordinateSystem": "Y up, X right and Z down on source plan; origin pixel (246,236). No geographic north inferred.",
+    "parameters": {
+      "ceilingHeight": {
+        "value": 2.7,
+        "unit": "m",
+        "status": "Estimated",
+        "confidence": "LOW"
+      },
+      "doorHeight": {
+        "value": 2.1,
+        "unit": "m",
+        "status": "Estimated",
+        "confidence": "LOW"
+      },
+      "windowHeight": {
+        "value": 1.45,
+        "unit": "m",
+        "status": "Estimated",
+        "confidence": "LOW"
+      },
+      "sillHeight": {
+        "value": 0.85,
+        "unit": "m",
+        "status": "Estimated",
+        "confidence": "LOW"
+      },
+      "wallThicknessFactor": {
+        "value": 1,
+        "unit": "multiplier",
+        "status": "Estimated",
+        "confidence": "LOW"
+      }
+    },
+    "scaleMetresPerPixel": 0.014474077252985322,
+    "geometryStatus": "Calculated",
+    "sourceImageSize": [
+      1135,
+      1386
+    ],
+    "architectureVersion": "Architecture v1",
+    "geometryQA": "2026-09-30; physical inner wall faces; photo poses Estimated",
+    "controlMeasurements": [
+      {
+        "object": "existing-bed",
+        "component": "mattress",
+        "width": 1.4,
+        "depth": 2,
+        "unit": "m",
+        "status": "Confirmed",
+        "confidence": "HIGH",
+        "source": "Пользователь, 2026-09-30",
+        "scope": "Матрас; не наружный габарит кровати и не размер комнаты"
+      }
+    ]
+  },
+  "rooms": [
+    {
+      "id": "bedroom",
+      "label": "Спальня",
+      "officialArea": 14.8,
+      "calculatedArea": 14.910361968,
+      "errorPercent": 0.7456889729729799,
+      "polygon": [
+        [
+          0.130265,
+          0.130265
+        ],
+        [
+          0.130265,
+          3.587115
+        ],
+        [
+          4.443545,
+          3.587115
+        ],
+        [
+          4.443545,
+          0.130265
+        ]
+      ],
+      "floorHeight": 0,
+      "type": "living",
+      "status": "Calculated",
+      "confidence": "MEDIUM",
+      "source": "official-floorplan.png; shared constrained grid",
+      "rawPixelPolygon": [
+        [
+          255,
+          245
+        ],
+        [
+          537,
+          245
+        ],
+        [
+          537,
+          480
+        ],
+        [
+          255,
+          480
+        ]
+      ],
+      "rawAreaAtGlobalScale": 13.7229,
+      "color": "#b4b5c1",
+      "interiorPoint": [
+        2.2277450000000005,
+        1.85869
+      ],
+      "areaBasis": "Inner wall faces; door thresholds closed"
+    },
+    {
+      "id": "living",
+      "label": "Большая комната",
+      "officialArea": 18.9,
+      "calculatedArea": 19.002200744500005,
+      "errorPercent": 0.5407446798942228,
+      "polygon": [
+        [
+          4.704075,
+          0.130265
+        ],
+        [
+          4.704075,
+          3.587115
+        ],
+        [
+          10.201045,
+          3.587115
+        ],
+        [
+          10.201045,
+          0.130265
+        ]
+      ],
+      "floorHeight": 0,
+      "type": "living",
+      "status": "Calculated",
+      "confidence": "MEDIUM",
+      "source": "official-floorplan.png; shared constrained grid",
+      "rawPixelPolygon": [
+        [
+          555,
+          245
+        ],
+        [
+          944,
+          245
+        ],
+        [
+          944,
+          480
+        ],
+        [
+          555,
+          480
+        ]
+      ],
+      "rawAreaAtGlobalScale": 18.9298,
+      "color": "#d6c3a7",
+      "interiorPoint": [
+        7.438635,
+        1.85869
+      ],
+      "areaBasis": "Inner wall faces; door thresholds closed"
+    },
+    {
+      "id": "study",
+      "label": "Комната с диваном",
+      "officialArea": 11.1,
+      "calculatedArea": 11.016226449200003,
+      "errorPercent": -0.7547166738738453,
+      "polygon": [
+        [
+          0.130265,
+          3.847645
+        ],
+        [
+          0.130265,
+          7.285875000000001
+        ],
+        [
+          3.334305,
+          7.285875000000001
+        ],
+        [
+          3.334305,
+          3.847645
+        ]
+      ],
+      "floorHeight": 0,
+      "type": "living",
+      "status": "Calculated",
+      "confidence": "MEDIUM",
+      "source": "official-floorplan.png; shared constrained grid",
+      "rawPixelPolygon": [
+        [
+          255,
+          498
+        ],
+        [
+          467,
+          498
+        ],
+        [
+          467,
+          735
+        ],
+        [
+          255,
+          735
+        ]
+      ],
+      "rawAreaAtGlobalScale": 10.4043,
+      "color": "#bbc5c2",
+      "interiorPoint": [
+        1.721925,
+        5.5667599999999995
+      ],
+      "areaBasis": "Inner wall faces; door thresholds closed"
+    },
+    {
+      "id": "kitchen",
+      "label": "Кухня",
+      "officialArea": 12.9,
+      "calculatedArea": 13.209750112396698,
+      "errorPercent": 2.4011636619899024,
+      "polygon": [
+        [
+          -2.735605,
+          8.225973249083536
+        ],
+        [
+          -2.735605,
+          10.526516870414957
+        ],
+        [
+          -1.5887701394413731,
+          11.280605
+        ],
+        [
+          1.026305,
+          11.280605
+        ],
+        [
+          1.026305,
+          9.119945
+        ],
+        [
+          0.9539350000000001,
+          9.119945
+        ],
+        [
+          0.9539350000000001,
+          8.859415
+        ],
+        [
+          1.026305,
+          8.859415
+        ],
+        [
+          1.026305,
+          7.546405
+        ],
+        [
+          -1.597493039783992,
+          7.546405
+        ]
+      ],
+      "floorHeight": 0,
+      "type": "kitchen",
+      "status": "Calculated",
+      "confidence": "MEDIUM",
+      "source": "official-floorplan.png; shared constrained grid",
+      "rawPixelPolygon": [
+        [
+          142,
+          753
+        ],
+        [
+          326,
+          753
+        ],
+        [
+          326,
+          1014
+        ],
+        [
+          142,
+          1014
+        ],
+        [
+          60,
+          963
+        ],
+        [
+          60,
+          807
+        ]
+      ],
+      "rawAreaAtGlobalScale": 13.485,
+      "color": "#d9c6ae",
+      "interiorPoint": [
+        -1.04472,
+        9.39257
+      ],
+      "areaBasis": "Inner wall faces; door thresholds closed"
+    },
+    {
+      "id": "bathroom",
+      "label": "Ванная",
+      "officialArea": 3.9,
+      "calculatedArea": 3.8779309614000006,
+      "errorPercent": -0.5658727846153622,
+      "polygon": [
+        [
+          2.1276849999999996,
+          9.119945
+        ],
+        [
+          2.1276849999999996,
+          11.280605
+        ],
+        [
+          3.922475,
+          11.280605
+        ],
+        [
+          3.922475,
+          9.119945
+        ]
+      ],
+      "floorHeight": 0,
+      "type": "bathroom",
+      "status": "Calculated",
+      "confidence": "MEDIUM",
+      "source": "official-floorplan.png; shared constrained grid",
+      "rawPixelPolygon": [
+        [
+          393,
+          873
+        ],
+        [
+          517,
+          873
+        ],
+        [
+          517,
+          1014
+        ],
+        [
+          393,
+          1014
+        ]
+      ],
+      "rawAreaAtGlobalScale": 3.6205,
+      "color": "#abc0c6",
+      "interiorPoint": [
+        3.0394750000000004,
+        10.20027
+      ],
+      "areaBasis": "Inner wall faces; door thresholds closed"
+    },
+    {
+      "id": "balcony-west",
+      "label": "Лоджия 4,2",
+      "officialArea": 4.2,
+      "calculatedArea": 4.077969618497097,
+      "errorPercent": -2.9054852738786607,
+      "polygon": [
+        [
+          -1.58717,
+          5.226531799661611
+        ],
+        [
+          -1.58717,
+          7.285875000000001
+        ],
+        [
+          -0.130265,
+          7.285875000000001
+        ],
+        [
+          -0.130265,
+          3.7470911865700316
+        ]
+      ],
+      "floorHeight": 0,
+      "type": "balcony",
+      "status": "Calculated",
+      "confidence": "MEDIUM",
+      "source": "official-floorplan.png; shared constrained grid",
+      "rawPixelPolygon": [
+        [
+          124,
+          595
+        ],
+        [
+          237,
+          485
+        ],
+        [
+          237,
+          735
+        ],
+        [
+          142,
+          735
+        ],
+        [
+          124,
+          746
+        ]
+      ],
+      "rawAreaAtGlobalScale": 4.5834,
+      "color": "#c3c8b6",
+      "interiorPoint": [
+        -1.001568,
+        6.185414
+      ],
+      "areaBasis": "Inner wall faces; door thresholds closed"
+    },
+    {
+      "id": "balcony-east",
+      "label": "Лоджия 4,3",
+      "officialArea": 4.3,
+      "calculatedArea": 4.274262833949168,
+      "errorPercent": -0.5985387453681934,
+      "polygon": [
+        [
+          10.461575,
+          0.07237
+        ],
+        [
+          10.461575,
+          3.4393000000000002
+        ],
+        [
+          12.43323,
+          3.4393000000000002
+        ],
+        [
+          12.43323,
+          2.968697492415694
+        ],
+        [
+          11.605618957091439,
+          2.55552
+        ],
+        [
+          11.550310000000001,
+          2.55552
+        ],
+        [
+          11.550310000000001,
+          2.527907492415695
+        ],
+        [
+          11.525605128084857,
+          2.5155738036426727
+        ],
+        [
+          11.550310000000001,
+          2.4660889570914377
+        ],
+        [
+          11.550310000000001,
+          0.07237
+        ]
+      ],
+      "floorHeight": 0,
+      "type": "balcony",
+      "status": "Calculated",
+      "confidence": "MEDIUM",
+      "source": "official-floorplan.png; shared constrained grid",
+      "rawPixelPolygon": [
+        [
+          962,
+          241
+        ],
+        [
+          1044,
+          241
+        ],
+        [
+          1044,
+          408
+        ],
+        [
+          1105,
+          438
+        ],
+        [
+          1105,
+          470
+        ],
+        [
+          962,
+          470
+        ]
+      ],
+      "rawAreaAtGlobalScale": 4.4821,
+      "color": "#c3c8b6",
+      "interiorPoint": [
+        11.48034,
+        2.0864350000000003
+      ],
+      "areaBasis": "Inner wall faces; door thresholds closed"
+    },
+    {
+      "id": "wc",
+      "label": "Туалет по плану",
+      "officialArea": null,
+      "calculatedArea": 1.8793420680000015,
+      "errorPercent": null,
+      "polygon": [
+        [
+          1.142095,
+          9.119945
+        ],
+        [
+          1.142095,
+          11.280605
+        ],
+        [
+          2.011895,
+          11.280605
+        ],
+        [
+          2.011895,
+          9.119945
+        ]
+      ],
+      "floorHeight": 0,
+      "type": "wc",
+      "status": "Calculated",
+      "confidence": "MEDIUM",
+      "source": "official-floorplan.png; shared constrained grid",
+      "rawPixelPolygon": [
+        [
+          334,
+          873
+        ],
+        [
+          385,
+          873
+        ],
+        [
+          385,
+          1014
+        ],
+        [
+          334,
+          1014
+        ]
+      ],
+      "rawAreaAtGlobalScale": 1.4891,
+      "color": "#b8c5bf",
+      "interiorPoint": [
+        1.576995,
+        10.20027
+      ],
+      "areaBasis": "Inner wall faces; door thresholds closed"
+    },
+    {
+      "id": "hall",
+      "label": "Прихожая и коридор",
+      "officialArea": null,
+      "calculatedArea": 12.631123558000006,
+      "errorPercent": null,
+      "polygon": [
+        [
+          1.142095,
+          7.546405
+        ],
+        [
+          1.142095,
+          8.859415
+        ],
+        [
+          5.413305,
+          8.859415
+        ],
+        [
+          5.413305,
+          3.847645
+        ],
+        [
+          3.4500949999999997,
+          3.847645
+        ],
+        [
+          3.4500949999999997,
+          7.285875000000001
+        ],
+        [
+          4.365385,
+          7.285875000000001
+        ],
+        [
+          4.365385,
+          7.546405
+        ]
+      ],
+      "floorHeight": 0,
+      "type": "hall",
+      "status": "Calculated",
+      "confidence": "MEDIUM",
+      "source": "official-floorplan.png; shared constrained grid",
+      "rawPixelPolygon": [
+        [
+          475,
+          489
+        ],
+        [
+          620,
+          489
+        ],
+        [
+          620,
+          855
+        ],
+        [
+          334,
+          855
+        ],
+        [
+          334,
+          753
+        ],
+        [
+          533,
+          753
+        ],
+        [
+          533,
+          735
+        ],
+        [
+          475,
+          735
+        ]
+      ],
+      "rawAreaAtGlobalScale": 13.7515,
+      "color": "#d9d4a8",
+      "interiorPoint": [
+        3.5662,
+        6.852200000000001
+      ],
+      "areaBasis": "Inner wall faces; door thresholds closed"
+    }
+  ],
+  "walls": [
+    {
+      "id": "north",
+      "a": [
+        0,
+        0
+      ],
+      "b": [
+        10.33131,
+        0
+      ],
+      "thickness": 0.26053,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          246,
+          236
+        ],
+        [
+          953,
+          236
+        ]
+      ]
+    },
+    {
+      "id": "east-loggia-north",
+      "a": [
+        10.33131,
+        0
+      ],
+      "b": [
+        11.62268,
+        0
+      ],
+      "thickness": 0.14474,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          953,
+          236
+        ],
+        [
+          1049,
+          236
+        ]
+      ]
+    },
+    {
+      "id": "bedroom-west",
+      "a": [
+        0,
+        0
+      ],
+      "b": [
+        0,
+        3.71738
+      ],
+      "thickness": 0.26053,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          246,
+          236
+        ],
+        [
+          246,
+          489
+        ]
+      ]
+    },
+    {
+      "id": "bedroom-living",
+      "a": [
+        4.57381,
+        0
+      ],
+      "b": [
+        4.57381,
+        3.71738
+      ],
+      "thickness": 0.26053,
+      "type": "partition",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          546,
+          236
+        ],
+        [
+          546,
+          489
+        ]
+      ]
+    },
+    {
+      "id": "bedroom-south",
+      "a": [
+        0,
+        3.71738
+      ],
+      "b": [
+        4.57381,
+        3.71738
+      ],
+      "thickness": 0.26053,
+      "type": "partition",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          246,
+          489
+        ],
+        [
+          546,
+          489
+        ]
+      ]
+    },
+    {
+      "id": "living-south",
+      "a": [
+        4.57381,
+        3.71738
+      ],
+      "b": [
+        10.33131,
+        3.71738
+      ],
+      "thickness": 0.26053,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          546,
+          489
+        ],
+        [
+          953,
+          489
+        ]
+      ]
+    },
+    {
+      "id": "living-east",
+      "a": [
+        10.33131,
+        0
+      ],
+      "b": [
+        10.33131,
+        3.71738
+      ],
+      "thickness": 0.26053,
+      "type": "facade",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          953,
+          236
+        ],
+        [
+          953,
+          489
+        ]
+      ]
+    },
+    {
+      "id": "study-west",
+      "a": [
+        0,
+        3.71738
+      ],
+      "b": [
+        0,
+        7.41614
+      ],
+      "thickness": 0.26053,
+      "type": "facade",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          246,
+          489
+        ],
+        [
+          246,
+          744
+        ]
+      ]
+    },
+    {
+      "id": "study-east",
+      "a": [
+        3.3922,
+        3.71738
+      ],
+      "b": [
+        3.3922,
+        7.41614
+      ],
+      "thickness": 0.11579,
+      "type": "partition",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          471,
+          489
+        ],
+        [
+          471,
+          744
+        ]
+      ]
+    },
+    {
+      "id": "middle",
+      "a": [
+        -1.54873,
+        7.41614
+      ],
+      "b": [
+        4.23512,
+        7.41614
+      ],
+      "thickness": 0.26053,
+      "type": "partition",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          139,
+          744
+        ],
+        [
+          533,
+          744
+        ]
+      ]
+    },
+    {
+      "id": "hall-east",
+      "a": [
+        5.54357,
+        3.71738
+      ],
+      "b": [
+        5.54357,
+        8.98968
+      ],
+      "thickness": 0.26053,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          629,
+          489
+        ],
+        [
+          629,
+          864
+        ]
+      ]
+    },
+    {
+      "id": "entry",
+      "a": [
+        1.0842,
+        8.98968
+      ],
+      "b": [
+        5.54357,
+        8.98968
+      ],
+      "thickness": 0.26053,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          330,
+          864
+        ],
+        [
+          629,
+          864
+        ]
+      ]
+    },
+    {
+      "id": "kitchen-east",
+      "a": [
+        1.0842,
+        7.41614
+      ],
+      "b": [
+        1.0842,
+        11.41087
+      ],
+      "thickness": 0.11579,
+      "type": "partition",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          330,
+          744
+        ],
+        [
+          330,
+          1023
+        ]
+      ]
+    },
+    {
+      "id": "wc-bath",
+      "a": [
+        2.06979,
+        8.98968
+      ],
+      "b": [
+        2.06979,
+        11.41087
+      ],
+      "thickness": 0.11579,
+      "type": "partition",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          389,
+          864
+        ],
+        [
+          389,
+          1023
+        ]
+      ]
+    },
+    {
+      "id": "bath-east",
+      "a": [
+        4.05274,
+        8.98968
+      ],
+      "b": [
+        4.05274,
+        11.41087
+      ],
+      "thickness": 0.26053,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          526,
+          864
+        ],
+        [
+          526,
+          1023
+        ]
+      ]
+    },
+    {
+      "id": "south",
+      "a": [
+        -1.54873,
+        11.41087
+      ],
+      "b": [
+        4.05274,
+        11.41087
+      ],
+      "thickness": 0.26053,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          139,
+          1023
+        ],
+        [
+          526,
+          1023
+        ]
+      ]
+    },
+    {
+      "id": "bay-upper",
+      "a": [
+        -1.54873,
+        7.41614
+      ],
+      "b": [
+        -2.82245,
+        8.17668
+      ],
+      "thickness": 0.17369,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          139,
+          744
+        ],
+        [
+          51,
+          802
+        ]
+      ]
+    },
+    {
+      "id": "bay-front",
+      "a": [
+        -2.82245,
+        8.17668
+      ],
+      "b": [
+        -2.82245,
+        10.57335
+      ],
+      "thickness": 0.17369,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          51,
+          802
+        ],
+        [
+          51,
+          968
+        ]
+      ]
+    },
+    {
+      "id": "bay-lower",
+      "a": [
+        -2.82245,
+        10.57335
+      ],
+      "b": [
+        -1.54873,
+        11.41087
+      ],
+      "thickness": 0.17369,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          51,
+          968
+        ],
+        [
+          139,
+          1023
+        ]
+      ]
+    },
+    {
+      "id": "west-loggia-south",
+      "a": [
+        -1.65954,
+        7.41614
+      ],
+      "b": [
+        0,
+        7.41614
+      ],
+      "thickness": 0.14474,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          116,
+          744
+        ],
+        [
+          246,
+          744
+        ]
+      ]
+    },
+    {
+      "id": "west-loggia-front",
+      "a": [
+        -1.65954,
+        5.19688
+      ],
+      "b": [
+        -1.65954,
+        7.41614
+      ],
+      "thickness": 0.14474,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          116,
+          591
+        ],
+        [
+          116,
+          744
+        ]
+      ]
+    },
+    {
+      "id": "west-loggia-diagonal",
+      "a": [
+        -1.65954,
+        5.19688
+      ],
+      "b": [
+        0,
+        3.51167
+      ],
+      "thickness": 0.14474,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          116,
+          591
+        ],
+        [
+          246,
+          475
+        ]
+      ]
+    },
+    {
+      "id": "east-loggia-front",
+      "a": [
+        11.62268,
+        0
+      ],
+      "b": [
+        11.62268,
+        2.48315
+      ],
+      "thickness": 0.14474,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          1049,
+          236
+        ],
+        [
+          1049,
+          405
+        ]
+      ]
+    },
+    {
+      "id": "east-loggia-diagonal",
+      "a": [
+        11.62268,
+        2.48315
+      ],
+      "b": [
+        12.5056,
+        2.92394
+      ],
+      "thickness": 0.14474,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          1049,
+          405
+        ],
+        [
+          1110,
+          435
+        ]
+      ]
+    },
+    {
+      "id": "east-loggia-tip",
+      "a": [
+        12.5056,
+        2.92394
+      ],
+      "b": [
+        12.5056,
+        3.51167
+      ],
+      "thickness": 0.14474,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          1110,
+          435
+        ],
+        [
+          1110,
+          475
+        ]
+      ]
+    },
+    {
+      "id": "east-loggia-south",
+      "a": [
+        10.33131,
+        3.51167
+      ],
+      "b": [
+        12.5056,
+        3.51167
+      ],
+      "thickness": 0.14474,
+      "type": "exterior",
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "thicknessStatus": "Estimated",
+      "thicknessFactor": 1,
+      "rawPixelLine": [
+        [
+          953,
+          475
+        ],
+        [
+          1110,
+          475
+        ]
+      ]
+    }
+  ],
+  "doors": [
+    {
+      "id": "bedroom-door",
+      "wall": "bedroom-south",
+      "position": 3.82456,
+      "width": 0.7816,
+      "height": 2.1,
+      "sillHeight": 0,
+      "openingDirection": 1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "door",
+      "connects": [
+        "bedroom",
+        "hall"
+      ],
+      "heightStatus": "Estimated",
+      "hinge": "end",
+      "swingStatus": "Estimated"
+    },
+    {
+      "id": "living-door",
+      "wall": "living-south",
+      "position": 0.59588,
+      "width": 0.81055,
+      "height": 2.1,
+      "sillHeight": 0,
+      "openingDirection": 1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "door",
+      "connects": [
+        "living",
+        "hall"
+      ],
+      "heightStatus": "Estimated",
+      "hinge": "start",
+      "swingStatus": "Estimated"
+    },
+    {
+      "id": "study-door",
+      "wall": "study-east",
+      "position": 1.88564,
+      "width": 1.5632,
+      "height": 2.1,
+      "sillHeight": 0,
+      "openingDirection": -1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "double",
+      "connects": [
+        "study",
+        "hall"
+      ],
+      "heightStatus": "Estimated",
+      "hinge": "start",
+      "swingStatus": "Estimated"
+    },
+    {
+      "id": "kitchen-door",
+      "wall": "kitchen-east",
+      "position": 1.15393,
+      "width": 0.75265,
+      "height": 2.1,
+      "sillHeight": 0,
+      "openingDirection": -1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "glazed",
+      "connects": [
+        "kitchen",
+        "hall"
+      ],
+      "heightStatus": "Estimated",
+      "glazingStatus": "Confirmed",
+      "glazingSource": "P12",
+      "glazingDimensionsStatus": "Estimated",
+      "hinge": "start",
+      "swingStatus": "Estimated"
+    },
+    {
+      "id": "wc-door",
+      "wall": "entry",
+      "position": 0.48444,
+      "width": 0.69476,
+      "height": 2.1,
+      "sillHeight": 0,
+      "openingDirection": 1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "door",
+      "connects": [
+        "wc",
+        "hall"
+      ],
+      "heightStatus": "Estimated",
+      "hinge": "start",
+      "swingStatus": "Estimated"
+    },
+    {
+      "id": "bath-door",
+      "wall": "entry",
+      "position": 2.01772,
+      "width": 0.75265,
+      "height": 2.1,
+      "sillHeight": 0,
+      "openingDirection": 1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "door",
+      "connects": [
+        "bathroom",
+        "hall"
+      ],
+      "heightStatus": "Estimated",
+      "hinge": "end",
+      "swingStatus": "Estimated"
+    },
+    {
+      "id": "front-door",
+      "wall": "entry",
+      "position": 3.88686,
+      "width": 0.96976,
+      "height": 2.1,
+      "sillHeight": 0,
+      "openingDirection": 1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "entrance",
+      "connects": [
+        "hall",
+        "outside"
+      ],
+      "heightStatus": "Estimated",
+      "hinge": "end",
+      "swingStatus": "Estimated"
+    },
+    {
+      "id": "west-balcony-door",
+      "wall": "study-west",
+      "position": 2.77044,
+      "width": 0.81055,
+      "height": 2.1,
+      "sillHeight": 0,
+      "openingDirection": 1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "glazed",
+      "connects": [
+        "study",
+        "balcony-west"
+      ],
+      "heightStatus": "Estimated",
+      "hinge": "end",
+      "swingStatus": "Estimated"
+    },
+    {
+      "id": "east-balcony-door",
+      "wall": "living-east",
+      "position": 2.586,
+      "width": 0.7816,
+      "height": 2.1,
+      "sillHeight": 0,
+      "openingDirection": -1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "glazed",
+      "connects": [
+        "living",
+        "balcony-east"
+      ],
+      "heightStatus": "Estimated",
+      "hinge": "end",
+      "swingStatus": "Estimated"
+    }
+  ],
+  "windows": [
+    {
+      "id": "bedroom-window",
+      "wall": "bedroom-west",
+      "position": 1.74849,
+      "width": 2.09874,
+      "height": 1.45,
+      "sillHeight": 0.85,
+      "openingDirection": 1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "window",
+      "connects": [
+        "bedroom",
+        "outside"
+      ],
+      "heightStatus": "Estimated",
+      "paneCount": 3,
+      "paneCountStatus": "Confirmed",
+      "paneCountSource": "P09",
+      "paneWidthsStatus": "Estimated"
+    },
+    {
+      "id": "study-window",
+      "wall": "study-west",
+      "position": 1.43599,
+      "width": 1.6211,
+      "height": 1.45,
+      "sillHeight": 0.85,
+      "openingDirection": 1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "window",
+      "connects": [
+        "study",
+        "balcony-west"
+      ],
+      "heightStatus": "Estimated"
+    },
+    {
+      "id": "living-window",
+      "wall": "living-east",
+      "position": 1.39585,
+      "width": 1.46188,
+      "height": 1.45,
+      "sillHeight": 0.85,
+      "openingDirection": 1,
+      "confidence": "MEDIUM",
+      "status": "Calculated",
+      "type": "window",
+      "connects": [
+        "living",
+        "balcony-east"
+      ],
+      "heightStatus": "Estimated"
+    },
+    {
+      "id": "kitchen-bay-main",
+      "wall": "bay-front",
+      "position": 1.13278,
+      "width": 1.85268,
+      "height": 1.45,
+      "sillHeight": 0.85,
+      "openingDirection": 1,
+      "confidence": "LOW",
+      "status": "Estimated",
+      "type": "window",
+      "connects": [
+        "kitchen",
+        "outside"
+      ],
+      "heightStatus": "Estimated"
+    },
+    {
+      "id": "kitchen-bay-upper",
+      "wall": "bay-upper",
+      "position": 0.63475,
+      "width": 1.01319,
+      "height": 1.45,
+      "sillHeight": 0.85,
+      "openingDirection": 1,
+      "confidence": "LOW",
+      "status": "Estimated",
+      "type": "window",
+      "connects": [
+        "kitchen",
+        "outside"
+      ],
+      "heightStatus": "Estimated"
+    },
+    {
+      "id": "kitchen-bay-lower",
+      "wall": "bay-lower",
+      "position": 0.86869,
+      "width": 1.01319,
+      "height": 1.45,
+      "sillHeight": 0.85,
+      "openingDirection": 1,
+      "confidence": "LOW",
+      "status": "Estimated",
+      "type": "window",
+      "connects": [
+        "kitchen",
+        "outside"
+      ],
+      "heightStatus": "Estimated"
+    },
+    {
+      "id": "west-loggia-glass",
+      "wall": "west-loggia-front",
+      "position": 1.14589,
+      "width": 1.76584,
+      "height": 1.45,
+      "sillHeight": 0.85,
+      "openingDirection": 1,
+      "confidence": "LOW",
+      "status": "Estimated",
+      "type": "window",
+      "connects": [
+        "balcony-west",
+        "outside"
+      ],
+      "heightStatus": "Estimated"
+    },
+    {
+      "id": "west-loggia-angle-glass",
+      "wall": "west-loggia-diagonal",
+      "position": 1.10372,
+      "width": 1.98295,
+      "height": 1.45,
+      "sillHeight": 0.85,
+      "openingDirection": 1,
+      "confidence": "LOW",
+      "status": "Estimated",
+      "type": "window",
+      "connects": [
+        "balcony-west",
+        "outside"
+      ],
+      "heightStatus": "Estimated"
+    },
+    {
+      "id": "east-loggia-glass",
+      "wall": "east-loggia-front",
+      "position": 1.23423,
+      "width": 2.0119,
+      "height": 1.45,
+      "sillHeight": 0.85,
+      "openingDirection": 1,
+      "confidence": "LOW",
+      "status": "Estimated",
+      "type": "window",
+      "connects": [
+        "balcony-east",
+        "outside"
+      ],
+      "heightStatus": "Estimated"
+    },
+    {
+      "id": "east-loggia-angle-glass",
+      "wall": "east-loggia-diagonal",
+      "position": 0.48695,
+      "width": 0.69476,
+      "height": 1.45,
+      "sillHeight": 0.85,
+      "openingDirection": 1,
+      "confidence": "LOW",
+      "status": "Estimated",
+      "type": "window",
+      "connects": [
+        "balcony-east",
+        "outside"
+      ],
+      "heightStatus": "Estimated"
+    }
+  ],
+  "balconies": [
+    "balcony-west",
+    "balcony-east"
+  ],
+  "fixedFurniture": [
+    {
+      "id": "kitchen-run",
+      "name": "Кухонные нижние шкафы",
+      "category": "kitchen",
+      "width": 2.3,
+      "depth": 0.6,
+      "height": 0.9,
+      "position": [
+        -0.40527,
+        0,
+        10.86268
+      ],
+      "rotation": 180,
+      "color": "#e8e4d8",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "kitchen-return",
+      "name": "Кухонный возврат",
+      "category": "kitchen",
+      "width": 1.55,
+      "depth": 0.6,
+      "height": 0.9,
+      "position": [
+        0.59373,
+        0,
+        9.70537
+      ],
+      "rotation": 270,
+      "color": "#e8e4d8",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "kitchen-upper",
+      "name": "Навесные шкафы",
+      "category": "upper",
+      "width": 2.15,
+      "depth": 0.36,
+      "height": 0.75,
+      "position": [
+        -0.37633,
+        1.48,
+        11.07586
+      ],
+      "rotation": 180,
+      "color": "#e8e4d8",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "kitchen-oven",
+      "name": "Пенал с духовкой",
+      "category": "oven",
+      "width": 0.6,
+      "depth": 0.6,
+      "height": 2.3,
+      "position": [
+        -1.91001,
+        0,
+        9.93379
+      ],
+      "rotation": 90,
+      "color": "#e8e4d8",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "bath",
+      "name": "Ванна",
+      "category": "bath",
+      "width": 1.65,
+      "depth": 0.7,
+      "height": 0.6,
+      "position": [
+        3.02128,
+        0,
+        10.8779
+      ],
+      "rotation": 0,
+      "color": "#eeeeea",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "vanity",
+      "name": "Раковина и столешница",
+      "category": "sink",
+      "width": 0.6,
+      "depth": 0.5,
+      "height": 0.85,
+      "position": [
+        2.47297,
+        0,
+        9.47696
+      ],
+      "rotation": 90,
+      "color": "#e8e4d8",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "washer",
+      "name": "Стиральная машина",
+      "category": "washer",
+      "width": 0.6,
+      "depth": 0.5,
+      "height": 0.85,
+      "position": [
+        2.47297,
+        0,
+        10.11652
+      ],
+      "rotation": 90,
+      "color": "#e8e4d8",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "bath-toilet",
+      "name": "Унитаз на фото P08",
+      "category": "toilet",
+      "width": 0.38,
+      "depth": 0.61,
+      "height": 0.8,
+      "position": [
+        3.3922,
+        0,
+        9.50742
+      ],
+      "rotation": 180,
+      "color": "#e8e4d8",
+      "confidence": "MEDIUM",
+      "status": "Estimated"
+    },
+    {
+      "id": "wc",
+      "name": "Унитаз по плану",
+      "category": "toilet",
+      "width": 0.38,
+      "depth": 0.62,
+      "height": 0.8,
+      "position": [
+        1.55194,
+        0,
+        10.75608
+      ],
+      "rotation": 0,
+      "color": "#e8e4d8",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "hall-closet",
+      "name": "Шкаф в прихожей",
+      "category": "wardrobe",
+      "width": 1.7,
+      "depth": 0.55,
+      "height": 2.5,
+      "position": [
+        3.07,
+        0,
+        7.851405000000001
+      ],
+      "rotation": 0,
+      "color": "#c9c5b7",
+      "confidence": "LOW",
+      "status": "Estimated",
+      "placementSource": "P10/P11/P15; wall association confirmed, exact offset Estimated"
+    },
+    {
+      "id": "plan-niche",
+      "name": "Ниша у кухни",
+      "category": "cabinet",
+      "width": 0.8,
+      "depth": 0.42,
+      "height": 2.2,
+      "position": [
+        1.68558,
+        0,
+        7.86198
+      ],
+      "rotation": 0,
+      "color": "#e8e4d8",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "radiator-bed",
+      "name": "Радиатор",
+      "category": "radiator",
+      "width": 1,
+      "depth": 0.13,
+      "height": 0.55,
+      "position": [
+        0.20651,
+        0.18,
+        1.74849
+      ],
+      "rotation": 90,
+      "color": "#f2f2e9",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "radiator-study",
+      "name": "Радиатор",
+      "category": "radiator",
+      "width": 1,
+      "depth": 0.13,
+      "height": 0.55,
+      "position": [
+        0.20651,
+        0.18,
+        5.08084
+      ],
+      "rotation": 90,
+      "color": "#f2f2e9",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "radiator-living",
+      "name": "Радиатор",
+      "category": "radiator",
+      "width": 1,
+      "depth": 0.13,
+      "height": 0.55,
+      "position": [
+        10.12443,
+        0.18,
+        1.39585
+      ],
+      "rotation": 90,
+      "color": "#f2f2e9",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "radiator-kitchen",
+      "name": "Радиатор",
+      "category": "radiator",
+      "width": 0.8,
+      "depth": 0.13,
+      "height": 0.55,
+      "position": [
+        -2.5183,
+        0.18,
+        9.32468
+      ],
+      "rotation": 90,
+      "color": "#f2f2e9",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "light-bedroom",
+      "name": "Потолочный светильник",
+      "category": "light",
+      "width": 0.35,
+      "depth": 0.35,
+      "height": 0.08,
+      "position": [
+        2.2277450000000005,
+        2.61,
+        1.85869
+      ],
+      "rotation": 0,
+      "color": "#fff8d9",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "light-living",
+      "name": "Потолочный светильник",
+      "category": "light",
+      "width": 0.35,
+      "depth": 0.35,
+      "height": 0.08,
+      "position": [
+        7.438635,
+        2.61,
+        1.85869
+      ],
+      "rotation": 0,
+      "color": "#fff8d9",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "light-study",
+      "name": "Потолочный светильник",
+      "category": "light",
+      "width": 0.35,
+      "depth": 0.35,
+      "height": 0.08,
+      "position": [
+        1.721925,
+        2.61,
+        5.5667599999999995
+      ],
+      "rotation": 0,
+      "color": "#fff8d9",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "light-kitchen",
+      "name": "Потолочный светильник",
+      "category": "light",
+      "width": 0.35,
+      "depth": 0.35,
+      "height": 0.08,
+      "position": [
+        -1.04472,
+        2.61,
+        9.392570000000001
+      ],
+      "rotation": 0,
+      "color": "#fff8d9",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "light-bathroom",
+      "name": "Потолочный светильник",
+      "category": "light",
+      "width": 0.35,
+      "depth": 0.35,
+      "height": 0.08,
+      "position": [
+        3.0394750000000004,
+        2.61,
+        10.20027
+      ],
+      "rotation": 0,
+      "color": "#fff8d9",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "light-wc",
+      "name": "Потолочный светильник",
+      "category": "light",
+      "width": 0.35,
+      "depth": 0.35,
+      "height": 0.08,
+      "position": [
+        1.576995,
+        2.61,
+        10.20027
+      ],
+      "rotation": 0,
+      "color": "#fff8d9",
+      "confidence": "LOW",
+      "status": "Estimated"
+    },
+    {
+      "id": "light-hall",
+      "name": "Потолочный светильник",
+      "category": "light",
+      "width": 0.35,
+      "depth": 0.35,
+      "height": 0.08,
+      "position": [
+        3.5662,
+        2.61,
+        6.852200000000001
+      ],
+      "rotation": 0,
+      "color": "#fff8d9",
+      "confidence": "LOW",
+      "status": "Estimated"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "scale",
+      "label": "Масштаб и длины стен",
+      "status": "Calculated",
+      "confidence": "MEDIUM",
+      "detail": "Единый масштаб по семи площадям, совместная поправка общих линий стен до 16 px (~23 см). Нужен контрольный размер."
+    },
+    {
+      "id": "height",
+      "label": "Высота потолка",
+      "status": "Estimated",
+      "confidence": "LOW",
+      "detail": "2,70 м — редактируемое допущение, не замер."
+    },
+    {
+      "id": "kitchen-window",
+      "label": "Кухня: окно и эркер",
+      "status": "Unknown",
+      "confidence": "LOW",
+      "detail": "План показывает гранёный фасад; фото P06–P07 — одно плоское окно. Сохранён контур плана; боковое остекление предположительное."
+    },
+    {
+      "id": "bathroom-layout",
+      "label": "Туалет и ванная",
+      "status": "Unknown",
+      "confidence": "LOW",
+      "detail": "P08 показывает унитаз рядом со стиральной машиной в ванной. Наличие и конфигурация отдельного WC после ремонта не подтверждены. Перегородка сохранена по плану."
+    },
+    {
+      "id": "balcony-assignment",
+      "label": "Фотографии лоджий",
+      "status": "Estimated",
+      "confidence": "LOW",
+      "detail": "P03 → 4,2 и P16 → 4,3 — предварительное сопоставление по скошенным граням; нет проходного ракурса."
+    },
+    {
+      "id": "openings",
+      "label": "Проёмы и толщина стен",
+      "status": "Calculated / Estimated",
+      "confidence": "MEDIUM",
+      "detail": "Положение по плану, высота и толщина по предположению. Двухстворчатый проём комнаты 11,1 м² требует проверки."
+    },
+    {
+      "id": "total-area",
+      "label": "Что включено в 76,4 м²",
+      "status": "Unknown",
+      "confidence": "LOW",
+      "detail": "Число читается, но учёт лоджий в этой общей площади не пояснён. Не используется как независимое ограничение."
+    },
+    {
+      "id": "hall-portal",
+      "label": "Сужение/портал в прихожей",
+      "status": "Unknown",
+      "confidence": "LOW",
+      "detail": "Видно на P10, но точные координаты, ширина и глубина по схеме не определяются. В Architecture v1 не добавлен вымышленный обмер."
+    },
+    {
+      "id": "photo-match",
+      "label": "Камеры и совпадение с фото",
+      "status": "Estimated",
+      "confidence": "LOW",
+      "detail": "Все 16 ракурсов проверены в формате 4:3. Ни один не имеет метрической калибровки. P03/P06/P07/P08/P10/P16 содержат нерешённые геометрические расхождения."
+    }
+  ],
+  "photoCameras": [
+    {
+      "id": "P01",
+      "file": "1.581wsLa4SyRGB8kpMsOY32gQSSLOEckyRhxJJsAZQy7G.ymwKm-daSa2FG_1nwsKEegtdIuaeaca-csPCiXBln3c.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "bathroom",
+      "position": [
+        3.7525,
+        1.55,
+        9.37037
+      ],
+      "target": [
+        2.56973,
+        1.3,
+        10.86268
+      ],
+      "fov": 83,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "Вид от двери на ванну, раковину и стиральную машину.",
+      "url": "/references/P01.webp",
+      "roomAssignmentConfidence": "MEDIUM",
+      "qa": {
+        "result": "Partial",
+        "note": "Ванна слева, раковина/стиральная машина справа. Короб и точная конфигурация санузла не восстановлены."
+      }
+    },
+    {
+      "id": "P02",
+      "file": "1.8E9uJLa4XKZYk96rAguHXXaEXqDQhd6wWIhepN6NVKzY.YhWVekUwowrZsfwTOueoe6881els9Vhgnh3-lFNoeS0.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "study",
+      "position": [
+        3.02128,
+        1.55,
+        6.95198
+      ],
+      "target": [
+        0.10326,
+        1.3,
+        4.81975
+      ],
+      "fov": 76,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "От входа к балконному блоку; диван вдоль верхней стены плана.",
+      "url": "/references/P02.webp",
+      "roomAssignmentConfidence": "HIGH",
+      "qa": {
+        "result": "Partial",
+        "note": "Порядок балконной двери, окна и дивана совпадает. Углы открывания и размеры простенков оценочные."
+      }
+    },
+    {
+      "id": "P03",
+      "file": "1.CgKOf7a4puu4yCTmlhMDHpbfpO0w3iT9uNOk6T7WruE4.qqFzDriUrWtt2suW64S6mrZ75xaqA3EO6AUA7hIJ_A4.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "balcony-west",
+      "position": [
+        -0.37633,
+        1.55,
+        6.82144
+      ],
+      "target": [
+        -1.57763,
+        1.3,
+        4.74723
+      ],
+      "fov": 85,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "Остекление и скошенная грань. Отнесение к лоджии 4,2 предварительное.",
+      "url": "/references/P03.webp",
+      "roomAssignmentConfidence": "LOW",
+      "qa": {
+        "result": "Unresolved",
+        "note": "Угол остекления и деление створок расходятся. Привязка снимка к лоджии 4,2 предварительная."
+      }
+    },
+    {
+      "id": "P04",
+      "file": "1.E3nYfra4v5DuyT2d8hpDasDevZZm3z2G7tK9kmjXt5pu.12Y9x-6kjs13oI8iI-dvyH0ItqwKt2OO9DmIBouMRY4.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "kitchen",
+      "position": [
+        -0.20264,
+        1.55,
+        8.83232
+      ],
+      "target": [
+        0.59373,
+        1.3,
+        10.86268
+      ],
+      "fov": 87,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "Угол Г-образной кухни, мойка, варочная поверхность.",
+      "url": "/references/P04.webp",
+      "roomAssignmentConfidence": "HIGH",
+      "qa": {
+        "result": "Partial",
+        "note": "Исправлено направление на внутренний угол Г-образной кухни и ориентация фасадов. Габариты гарнитура оценочные."
+      }
+    },
+    {
+      "id": "P05",
+      "file": "1.IaJ5-ra4jUtPTQ9GN-Yzv2Faj03HWw9dT1aPSclThUHP.bAzW3c6nDt5kVB7eW0FZCa7TmECSuXl_WANGKmUKd54.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "study",
+      "position": [
+        0.29686,
+        1.55,
+        4.16703
+      ],
+      "target": [
+        2.60198,
+        1.3,
+        6.87946
+      ],
+      "fov": 87,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "Обратный вид: вход слева, комод и балконный блок справа.",
+      "url": "/references/P05.webp",
+      "roomAssignmentConfidence": "HIGH",
+      "qa": {
+        "result": "Partial",
+        "note": "Вход слева, балконный блок справа. Ширина и число створок входного проёма требуют проверки."
+      }
+    },
+    {
+      "id": "P06",
+      "file": "1.J06RuLa4i6enDwmq06QuUokYiaEvGQmxpxSJpSERg60n.O4-JbYOMGpijK_Eu1OfZb9hf2DPepg6F6zQ1GCvpVEA.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "kitchen",
+      "position": [
+        0.10326,
+        1.55,
+        8.67497
+      ],
+      "target": [
+        -2.66143,
+        1.3,
+        9.35514
+      ],
+      "fov": 76,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "Кухня от входа: гарнитур слева, стол справа, окно впереди. Эркер на плане не подтверждается фото.",
+      "url": "/references/P06.webp",
+      "roomAssignmentConfidence": "MEDIUM",
+      "qa": {
+        "result": "Unresolved",
+        "note": "Камера выведена из холодильника. Гранёный фасад с тремя окнами модели расходится с одним плоским окном на фото."
+      }
+    },
+    {
+      "id": "P07",
+      "file": "1.ODV3h7a4lNxBMBbRC8MHJm8nltrJJhbKQSuW3scunNbB.NnoCA6P5oI3fmD9OL4fcmdaSuhcsDtU0x1sG2yTdTk8.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "kitchen",
+      "position": [
+        0.10326,
+        1.55,
+        9.18764
+      ],
+      "target": [
+        -2.41096,
+        1.3,
+        10.2688
+      ],
+      "fov": 82,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "Кухонный гарнитур, пенал и окно.",
+      "url": "/references/P07.webp",
+      "roomAssignmentConfidence": "MEDIUM",
+      "qa": {
+        "result": "Unresolved",
+        "note": "Та же нерешённая форма кухни и боковое остекление; точный photo-match не достигнут."
+      }
+    },
+    {
+      "id": "P08",
+      "file": "1.QxnZv7a47_DvCG390_ZjCsEf7fZnHm3m7xPt8mkW5_pv.Eo9-p6Gal2L0QVBxuOOGKzpvrKWiIOIYgwt2aM33T7A.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "bathroom",
+      "position": [
+        3.76451,
+        1.55,
+        10.81699
+      ],
+      "target": [
+        2.63424,
+        1.3,
+        9.35514
+      ],
+      "fov": 83,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "Стиральная машина, унитаз, короб и полотенцесушитель. Точное место короба неизвестно.",
+      "url": "/references/P08.webp",
+      "roomAssignmentConfidence": "MEDIUM",
+      "qa": {
+        "result": "Unresolved",
+        "note": "На фото за унитазом короб, в модели дверь. Актуальная перегородка WC и положение оборудования неоднозначны."
+      }
+    },
+    {
+      "id": "P09",
+      "file": "1.YfP_bLa4zRrJ208XsXl37ufMzxxBzU8MycDPGE_FxRBJ.dY36St35FiC6zq1MpkAe1Uobhd5ieV3SG_7QLZIyPNQ.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "bedroom",
+      "position": [
+        3.89661,
+        1.55,
+        3.32066
+      ],
+      "target": [
+        0.21942,
+        1.3,
+        1.52809
+      ],
+      "fov": 79,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "Кровать слева, окно прямо, низкая тумба справа.",
+      "url": "/references/P09.webp",
+      "roomAssignmentConfidence": "HIGH",
+      "qa": {
+        "result": "Partial",
+        "note": "Три секции окна исправлены; матрас 140 × 200 см сохранён. Положение объектов согласуется качественно, метрической калибровки нет."
+      }
+    },
+    {
+      "id": "P10",
+      "file": "1.hwCQcba4K-mmxqnkknOrEojRKe8u0Kn_pt0p6yDYI-Mm.8zydb0lBNv-kSUvMKszwrGv3t1ksg-ZW7J0alvlPRH8.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "hall",
+      "position": [
+        4.83085,
+        1.55,
+        4.21055
+      ],
+      "target": [
+        5.0879,
+        1.3,
+        8.84543
+      ],
+      "fov": 79,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "В сторону входной двери. Двери комнат справа в кадре.",
+      "url": "/references/P10.webp",
+      "roomAssignmentConfidence": "HIGH",
+      "qa": {
+        "result": "Unresolved",
+        "note": "Шкаф убран из прохода. Видимый на фото внутренний портал/сужение отсутствует в модели: точные координаты неизвестны."
+      }
+    },
+    {
+      "id": "P11",
+      "file": "1.n81ymra4MyRELbEpQLzo32o6MSLMO7EyRDYxJsIzOy7E.5hog-E5H_rRR30D4Fl1oOgNP8mwKiaa-ip9zSbsmwnQ.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "hall",
+      "position": [
+        5.18137,
+        1.55,
+        8.58318
+      ],
+      "target": [
+        0.69698,
+        1.3,
+        8.63563
+      ],
+      "fov": 79,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "От входа к кухне, зеркальный шкаф справа.",
+      "url": "/references/P11.webp",
+      "roomAssignmentConfidence": "HIGH",
+      "qa": {
+        "result": "Partial",
+        "note": "Шкаф теперь вдоль стены справа, а не поперёк прохода. Отступ оценочный; открытые полотна модели отличаются от фото."
+      }
+    },
+    {
+      "id": "P12",
+      "file": "1.oQl_Era4DeBJpY_tMVDYG2eyD-bBs4_2Sb4P4s-7BerJ.0UechgTz9YgIkrjiw_06_FnvAD15UoYSitYA19vnjrk.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "kitchen",
+      "position": [
+        -1.51978,
+        1.55,
+        9.91856
+      ],
+      "target": [
+        0.80024,
+        1.3,
+        8.76676
+      ],
+      "fov": 80,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "Обратный ракурс: стол, холодильник и дверь.",
+      "url": "/references/P12.webp",
+      "roomAssignmentConfidence": "HIGH",
+      "qa": {
+        "result": "Partial",
+        "note": "Камера выведена из пенала духовки. Компоновка и кадрирование остаются приблизительными; метрического совпадения нет."
+      }
+    },
+    {
+      "id": "P13",
+      "file": "1.pfQiOLa4CR0Uj4sQZCbd5jqYCxucmYsLFJQLH5KRAReU.2SBIjZs-m3GHfVZDwQGGXSYHTd-_0untBIfpu9_clhE.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "living",
+      "position": [
+        9.68112,
+        1.55,
+        0.66119
+      ],
+      "target": [
+        4.99443,
+        1.3,
+        3.21781
+      ],
+      "fov": 82,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "Обратный вид: вход, шкаф и стена с орнаментом.",
+      "url": "/references/P13.webp",
+      "roomAssignmentConfidence": "HIGH",
+      "qa": {
+        "result": "Partial",
+        "note": "Вход и сторона шкафа согласуются. Пропорции, камера и габариты существующего шкафа оценочные."
+      }
+    },
+    {
+      "id": "P14",
+      "file": "1.sDHSB7a4HNjksJ7VvhmbI8qnHt5spp7O5Kse2mKuFNJk.Bz7ls0fAPfufEfTzRQVr50WSJ8J7gGOS8ESjImTD83w.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "living",
+      "position": [
+        5.06453,
+        1.55,
+        3.21781
+      ],
+      "target": [
+        10.09488,
+        1.3,
+        1.32239
+      ],
+      "fov": 78,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "К балконному блоку; дверь справа от окна, шкаф слева.",
+      "url": "/references/P14.webp",
+      "roomAssignmentConfidence": "HIGH",
+      "qa": {
+        "result": "Partial",
+        "note": "Окно слева от балконной двери, шкаф слева в кадре. Ширины простенков и угол камеры не измерены."
+      }
+    },
+    {
+      "id": "P15",
+      "file": "1.v5qRu7a4E3OnDJF-4425hokbEXUvGpFlpxcRcSESG3kn.ipSZ-uqmir8BEMzAOqjIyGWbFGc93k-_ZjFxb1nLKNY.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "hall",
+      "position": [
+        4.88927,
+        1.55,
+        8.47828
+      ],
+      "target": [
+        4.85422,
+        1.3,
+        3.7899
+      ],
+      "fov": 77,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "В противоположную от входа сторону: двери трёх комнат.",
+      "url": "/references/P15.webp",
+      "roomAssignmentConfidence": "HIGH",
+      "qa": {
+        "result": "Partial",
+        "note": "Камера больше не пересекает шкаф после исправления его привязки. Двери трёх комнат по порядку совпадают, сужение коридора не восстановлено."
+      }
+    },
+    {
+      "id": "P16",
+      "file": "1.xywLhba4a8U9MunICaq-PhMlacO1JOnTPSlpx7ssY8-9.-O7YQhEnSexdfI_Jjty1_rJEwBgR5XTFIp72Y70S4B0.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "room": "balcony-east",
+      "position": [
+        10.6676,
+        1.55,
+        3.11496
+      ],
+      "target": [
+        11.52852,
+        1.3,
+        0.61711
+      ],
+      "fov": 87,
+      "status": "Estimated",
+      "confidence": "LOW",
+      "visibleSurfaces": "Панорамное остекление; отнесение к лоджии 4,3 предварительное.",
+      "url": "/references/P16.webp",
+      "roomAssignmentConfidence": "LOW",
+      "qa": {
+        "result": "Unresolved",
+        "note": "Вид на угол остекления не воспроизведён; привязка к лоджии 4,3 и деление остекления предварительные."
+      }
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+
+> apartment-planner@1.0.0 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: room floors and reported areas follow actual inner wall faces
+ok 1 - room floors and reported areas follow actual inner wall faces
+  ---
+  duration_ms: 18.610125
+  ...
+# Subtest: changing wall thickness recalculates useful room contours and areas
+ok 2 - changing wall thickness recalculates useful room contours and areas
+  ---
+  duration_ms: 63.994167
+  ...
+# Subtest: balcony door glass has no opaque full leaf behind it
+ok 3 - balcony door glass has no opaque full leaf behind it
+  ---
+  duration_ms: 19.403458
+  ...
+# Subtest: bedroom window has the three glazed sections visible in P09
+ok 4 - bedroom window has the three glazed sections visible in P09
+  ---
+  duration_ms: 11.306375
+  ...
+# Subtest: all opening centres are true voids through their wall meshes
+ok 5 - all opening centres are true voids through their wall meshes
+  ---
+  duration_ms: 18.4805
+  ...
+# Subtest: all sixteen photo cameras start within their assigned rooms
+ok 6 - all sixteen photo cameras start within their assigned rooms
+  ---
+  duration_ms: 10.192625
+  ...
+# Subtest: photo camera eyes are outside all existing fixture volumes
+ok 7 - photo camera eyes are outside all existing fixture volumes
+  ---
+  duration_ms: 0.753042
+  ...
+# Subtest: P04 looks toward the inner L kitchen corner visible in the photo
+ok 8 - P04 looks toward the inner L kitchen corner visible in the photo
+  ---
+  duration_ms: 0.103583
+  ...
+# Subtest: kitchen cabinet fronts face the usable room
+ok 9 - kitchen cabinet fronts face the usable room
+  ---
+  duration_ms: 0.194875
+  ...
+# Subtest: hall closet leaves the kitchen sightline open in P11
+ok 10 - hall closet leaves the kitchen sightline open in P11
+  ---
+  duration_ms: 1.062542
+  ...
+# Subtest: all allowed wall thickness extremes preserve nine correctly matched rooms
+ok 11 - all allowed wall thickness extremes preserve nine correctly matched rooms
+  ---
+  duration_ms: 29.8915
+  ...
+# Subtest: kitchen door has the glazed upper panel visible in P12
+ok 12 - kitchen door has the glazed upper panel visible in P12
+  ---
+  duration_ms: 0.1545
+  ...
+# Subtest: nine interior regions include three living rooms and two loggias
+ok 13 - nine interior regions include three living rooms and two loggias
+  ---
+  duration_ms: 2.25125
+  ...
+# Subtest: all seven printed areas fit within 3%, computed independently from polygon vertices
+ok 14 - all seven printed areas fit within 3%, computed independently from polygon vertices
+  ---
+  duration_ms: 0.199125
+  ...
+# Subtest: all openings are contained in their own wall and do not overlap
+ok 15 - all openings are contained in their own wall and do not overlap
+  ---
+  duration_ms: 0.635667
+  ...
+# Subtest: all 16 photographs are mapped and model assumptions are retained
+ok 16 - all 16 photographs are mapped and model assumptions are retained
+  ---
+  duration_ms: 0.352791
+  ...
+# Subtest: fixed fixtures do not physically overlap each other
+ok 17 - fixed fixtures do not physically overlap each other
+  ---
+  duration_ms: 3.668208
+  ...
+# Subtest: fixed fixtures do not penetrate solid walls
+ok 18 - fixed fixtures do not penetrate solid walls
+  ---
+  duration_ms: 4.405292
+  ...
+# Subtest: area uses concave interior polygon in metres
+ok 19 - area uses concave interior polygon in metres
+  ---
+  duration_ms: 1.707542
+  ...
+# Subtest: room membership excludes concave cutout and includes boundary
+ok 20 - room membership excludes concave cutout and includes boundary
+  ---
+  duration_ms: 0.373084
+  ...
+# Subtest: measurement includes true vertical distance and centimetres
+ok 21 - measurement includes true vertical distance and centimetres
+  ---
+  duration_ms: 0.921625
+  ...
+# Subtest: grid snaps in world metres and may be disabled
+ok 22 - grid snaps in world metres and may be disabled
+  ---
+  duration_ms: 0.11425
+  ...
+# Subtest: rotated furniture preserves footprint dimensions
+ok 23 - rotated furniture preserves footprint dimensions
+  ---
+  duration_ms: 2.062917
+  ...
+# Subtest: SAT detects overlap but not separated or just touching objects
+ok 24 - SAT detects overlap but not separated or just touching objects
+  ---
+  duration_ms: 1.431583
+  ...
+# Subtest: door and window are real voids with sill/lintel retained
+ok 25 - door and window are real voids with sill/lintel retained
+  ---
+  duration_ms: 0.232458
+  ...
+# Subtest: rotate and measure clicks in furniture mode are not consumed by drag
+ok 26 - rotate and measure clicks in furniture mode are not consumed by drag
+  ---
+  duration_ms: 1.654625
+  ...
+# Subtest: drag remains serializable even beyond visible scene or near horizon
+ok 27 - drag remains serializable even beyond visible scene or near horizon
+  ---
+  duration_ms: 1.075792
+  ...
+# Subtest: adding outside rooms uses an interior fallback independent of polygon winding
+ok 28 - adding outside rooms uses an interior fallback independent of polygon winding
+  ---
+  duration_ms: 9.879875
+  ...
+# Subtest: export roundtrip keeps real dimensions, position, angle, room and visibility
+ok 29 - export roundtrip keeps real dimensions, position, angle, room and visibility
+  ---
+  duration_ms: 5.131166
+  ...
+# Subtest: duplicate is independent and has a fresh identity
+ok 30 - duplicate is independent and has a fresh identity
+  ---
+  duration_ms: 0.364375
+  ...
+# Subtest: invalid dimensions or non-finite coordinate fail before replacing layout
+ok 31 - invalid dimensions or non-finite coordinate fail before replacing layout
+  ---
+  duration_ms: 0.740291
+  ...
+# Subtest: unknown versions, duplicate ids and missing custom definitions are rejected
+ok 32 - unknown versions, duplicate ids and missing custom definitions are rejected
+  ---
+  duration_ms: 0.891083
+  ...
+# Subtest: import rejects render-breaking optional objects and enormous rotations
+ok 33 - import rejects render-breaking optional objects and enormous rotations
+  ---
+  duration_ms: 0.697458
+  ...
+# Subtest: bed mattress uses user confirmed 140 by 200 cm, while exterior frame remains estimated
+ok 34 - bed mattress uses user confirmed 140 by 200 cm, while exterior frame remains estimated
+  ---
+  duration_ms: 4.877875
+  ...
+# Subtest: every initial movable object fits without wall or furniture volume collisions
+ok 35 - every initial movable object fits without wall or furniture volume collisions
+  ---
+  duration_ms: 3.018625
+  ...
+# Subtest: import rejects invalid or oversize mattress before changing layout
+ok 36 - import rejects invalid or oversize mattress before changing layout
+  ---
+  duration_ms: 0.58075
+  ...
+# Subtest: actual wall meshes admit ray through doorway and block ray above lintel
+ok 37 - actual wall meshes admit ray through doorway and block ray above lintel
+  ---
+  duration_ms: 12.877583
+  ...
+# Subtest: sofa proxy occupies exact declared bounding dimensions
+ok 38 - sofa proxy occupies exact declared bounding dimensions
+  ---
+  duration_ms: 2.67025
+  ...
+# Subtest: bed proxy occupies exact declared bounding dimensions
+ok 39 - bed proxy occupies exact declared bounding dimensions
+  ---
+  duration_ms: 0.682083
+  ...
+# Subtest: piano proxy occupies exact declared bounding dimensions
+ok 40 - piano proxy occupies exact declared bounding dimensions
+  ---
+  duration_ms: 1.722458
+  ...
+# Subtest: wardrobe proxy occupies exact declared bounding dimensions
+ok 41 - wardrobe proxy occupies exact declared bounding dimensions
+  ---
+  duration_ms: 0.287958
+  ...
+# Subtest: washer proxy occupies exact declared bounding dimensions
+ok 42 - washer proxy occupies exact declared bounding dimensions
+  ---
+  duration_ms: 1.27225
+  ...
+# Subtest: table proxy occupies exact declared bounding dimensions
+ok 43 - table proxy occupies exact declared bounding dimensions
+  ---
+  duration_ms: 0.273792
+  ...
+# Subtest: chair proxy occupies exact declared bounding dimensions
+ok 44 - chair proxy occupies exact declared bounding dimensions
+  ---
+  duration_ms: 0.707916
+  ...
+# Subtest: radiator proxy occupies exact declared bounding dimensions
+ok 45 - radiator proxy occupies exact declared bounding dimensions
+  ---
+  duration_ms: 0.725958
+  ...
+# Subtest: bath proxy occupies exact declared bounding dimensions
+ok 46 - bath proxy occupies exact declared bounding dimensions
+  ---
+  duration_ms: 0.488208
+  ...
+# Subtest: sink proxy occupies exact declared bounding dimensions
+ok 47 - sink proxy occupies exact declared bounding dimensions
+  ---
+  duration_ms: 0.522
+  ...
+# Subtest: walk advances in metric scene with floor height preserved
+ok 48 - walk advances in metric scene with floor height preserved
+  ---
+  duration_ms: 1.706416
+  ...
+# Subtest: walk cannot cross a solid bedroom partition
+ok 49 - walk cannot cross a solid bedroom partition
+  ---
+  duration_ms: 1.919041
+  ...
+1..49
+# tests 49
+# suites 0
+# pass 49
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 330.931333
