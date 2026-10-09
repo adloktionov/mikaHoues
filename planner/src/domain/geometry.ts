@@ -87,3 +87,9 @@ export function changeWallProfile(p:ProjectDocument,kind:'interior'|'exterior',p
  }else p.exteriorProfileId=profileId;
  const errors=validateArchitecture(p);if(errors.length)throw new Error(errors[0]);
 }
+export function changeProfileWidth(p:ProjectDocument,id:string,width:number){
+ if(!Number.isFinite(width)||width<.01||width>3)throw new Error('Толщина от 0,01 до 3 м');
+ const m=p.profiles.find(m=>m.id===id);if(!m)throw new Error('Материал не найден');
+ if(id===p.interiorProfileId){const temp={...m,id:uid(),width};p.profiles.push(temp);changeWallProfile(p,'interior',temp.id);p.interiorProfileId=id;p.profiles.pop();}
+ m.width=width;const errors=validateArchitecture(p);if(errors.length)throw new Error(errors[0]);
+}

@@ -13,7 +13,7 @@ export interface LightDefinition { id:string; name:string; type:'point'|'spot'; 
 export interface ProjectDocument { schemaVersion:1; id:string; name:string; revision:number; height:number; rooms:Room[]; openings:Opening[]; profiles:MasonryProfile[]; exteriorProfileId:string; interiorProfileId:string; variants:LayoutVariant[]; activeVariantId:string; architectureLocked:boolean; lighting:{sun:number;fill:number;azimuth:number;altitude:number;lights:LightDefinition[];hdriAssetId?:string}; createdAt:string; updatedAt:string }
 export interface AssetStats { triangles:number; vertices:number; meshes:number; materials:number; textures:number; texturePixels:number; estimatedBytes:number; bounds:[number,number,number]; processingMs:number }
 export interface AssetRecord { id:string; name:string; kind:'model'|'hdri'|'texture'; originals:{name:string;blob:Blob}[]; glb?:Blob; lowGlb?:Blob; thumbnail?:Blob; stats?:AssetStats; warnings:string[] }
-export interface MasonryPiece { id:string;wallId:string;row:number;start:number;length:number;y:number;height:number;profileId:string;stockId:string;stockIndex:number;cut:boolean }
+export interface MasonryPiece { footprint:Point[];id:string;wallId:string;row:number;start:number;length:number;y:number;height:number;profileId:string;stockId:string;stockIndex:number;cut:boolean }
 export interface MasonryIssue { wallId:string;row?:number;message:string;rule:string }
 export interface StockUse { id:number;profileId:string;stockId:string;length:number;used:number;kerf:number;remaining:number;pieceIds:string[] }
 export interface MasonryResult { pieces:MasonryPiece[];stock:StockUse[];issues:MasonryIssue[];complete:boolean;revision:number;elapsedMs:number }

@@ -33,3 +33,4 @@ describe('project transactions', () => {
     expect((await r.load(p.id))?.document.name).toBe('Новая версия'); await r.db.delete();
   });
 });
+it('requires a thinner interior element than the exterior element',()=>{const p=createProject();p.interiorProfileId=p.exteriorProfileId;expect(()=>validateProject(p)).toThrow();});
