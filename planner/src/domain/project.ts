@@ -1,3 +1,4 @@
+import {validateArchitecture} from './geometry';
 import type { ProjectDocument, LayoutVariant, Material } from './types';
 export const uid=()=>crypto.randomUUID();
 export const clone=<T>(x:T):T=>JSON.parse(JSON.stringify(x));
@@ -20,7 +21,7 @@ export function validateProject(value:unknown):ProjectDocument {
  assert(finite(p.height,.1,20)&&finite(p.revision,0,Number.MAX_SAFE_INTEGER),'Некорректная высота или версия');
  assert(Array.isArray(p.rooms)&&p.rooms.length<=500&&Array.isArray(p.openings)&&p.openings.length<=5000,'Некорректные помещения');
  const ids=new Set<string>(); const unique=(id:string)=>{assert(typeof id==='string'&&id.length>0&&!ids.has(id),'Повторяющийся ID');ids.add(id);};
- for(const r of p.rooms){unique(r.id);assert(typeof r.name==='string'&&Array.isArray(r.points)&&r.points.length>=3&&r.points.length<=500,'Некорректный контур');for(const v of r.points)assert(finite(v.x,-1000,1000)&&finite(v.z,-1000,1000),'Некорректные координаты');}
+ for(const r of p.rooms){unique(r.id);assert(typeof r.name==='string'&&Array.isArray(r.points)&&r.points.length>=3&&r.points.length<=500,'Некорректный контур');const vertices=new Set<string>();for(const [i,v] of r.points.entries()){assert(finite(v.x,-1000,1000)&&finite(v.z,-1000,1000),'Некорректные координаты');const id=v.id??`${r.id}-v${i}`;assert(typeof id==='string'&&id.length>0&&!vertices.has(id),'Повторяющийся ID вершины');vertices.add(id);}}
  assert(Array.isArray(p.profiles)&&p.profiles.length>0&&p.profiles.length<=50,'Не заданы материалы кладки');
  for(const m of p.profiles){unique(m.id);assert(['aac','brick'].includes(m.kind)&&typeof m.name==='string','Некорректный материал');for(const n of [m.length,m.width,m.height])assert(finite(n,.01,3),'Некорректные размеры блока');for(const n of [m.horizontalJoint,m.verticalJoint,m.kerf])assert(finite(n,0,.05),'Некорректный шов или рез');assert(Array.isArray(m.stock)&&m.stock.length>0&&m.stock.length<100,'Нет типоразмеров');for(const s of m.stock){assert(typeof s.id==='string'&&finite(s.length,.01,5)&&typeof s.enabled==='boolean','Некорректный типоразмер');}}
  assert(p.profiles.some(m=>m.id===p.exteriorProfileId)&&p.profiles.some(m=>m.id===p.interiorProfileId),'Не найден материал стены');
@@ -31,6 +32,7 @@ export function validateProject(value:unknown):ProjectDocument {
  assert(typeof p.architectureLocked==='boolean'&&p.lighting&&Array.isArray(p.lighting.lights),'Некорректные настройки');
  assert(finite(p.lighting.sun,0,20)&&finite(p.lighting.fill,0,10)&&finite(p.lighting.azimuth,0,360)&&finite(p.lighting.altitude,1,90),'Некорректный свет');
  for(const l of p.lighting.lights){unique(l.id);assert(['point','spot'].includes(l.type)&&[l.x,l.y,l.z,l.targetX,l.targetY,l.targetZ].every(n=>finite(n,-1000,1000))&&finite(l.intensity,0,10000)&&finite(l.angle,.01,1.57)&&/^#[0-9a-f]{6}$/i.test(l.color),'Некорректный светильник');}
+ const geometryErrors=validateArchitecture(p);assert(!geometryErrors.length,geometryErrors[0]||'Некорректная геометрия');
  return clone(p);
 }
 export function duplicateVariant(p:ProjectDocument):LayoutVariant {const source=p.variants.find(v=>v.id===p.activeVariantId)!;const copy=clone(source);copy.id=uid();copy.name=source.name+' — копия';p.variants.push(copy);p.activeVariantId=copy.id;return copy;}
