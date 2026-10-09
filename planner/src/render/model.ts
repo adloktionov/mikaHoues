@@ -1,14 +1,14 @@
-import {BoxGeometry,ExtrudeGeometry,Group,Mesh,MeshStandardMaterial,Path,Shape,Vector2,Texture,BufferGeometry,Material as ThreeMaterial,Object3D} from 'three';
+import {BoxGeometry,ExtrudeGeometry,Group,Mesh,MeshStandardMaterial,MeshLambertMaterial,Path,Shape,Vector2,Texture,BufferGeometry,Material as ThreeMaterial,Object3D} from 'three';
 import clipping from 'polygon-clipping';
 import type {FurnitureInstance,Material,ProjectDocument} from '../domain/types';
 import {deriveWalls,ring,wallPolygon} from '../domain/geometry';
 import {furnitureParts} from '../domain/furniture';
 
-export function surface(m:Material){return new MeshStandardMaterial({color:m.color,roughness:m.roughness,metalness:m.metalness,transparent:m.opacity<1,opacity:m.opacity});}
+export function surface(m:Material,simple=false){if(simple)return new MeshLambertMaterial({color:m.color,transparent:m.opacity<1,opacity:m.opacity});return new MeshStandardMaterial({color:m.color,roughness:m.roughness,metalness:m.metalness,transparent:m.opacity<1,opacity:m.opacity});}
 export function buildFurniture(f:FurnitureInstance,proxy=false){const group=new Group();group.name=f.name;group.userData.furnitureId=f.id;group.position.set(f.x,f.y,f.z);group.rotation.y=-f.rotation*Math.PI/180;
  const parts=proxy?[{id:'proxy',name:f.name,x:0,y:f.height/2,z:0,width:f.width,height:f.height,depth:f.depth,material:f.material}]:furnitureParts(f);
- const materials=new Map<string,MeshStandardMaterial>();
- for(const part of parts){const key=JSON.stringify(part.material);let mat=materials.get(key);if(!mat){mat=surface(part.material);materials.set(key,mat);}const mesh=new Mesh(new BoxGeometry(part.width,part.height,part.depth),mat);mesh.position.set(part.x,part.y,part.z);mesh.name=part.name;mesh.userData.partId=part.id;mesh.castShadow=true;mesh.receiveShadow=true;group.add(mesh);}return group;
+ const materials=new Map<string,ThreeMaterial>();
+ for(const part of parts){const key=JSON.stringify(part.material);let mat=materials.get(key);if(!mat){mat=surface(part.material,proxy);materials.set(key,mat);}const mesh=new Mesh(new BoxGeometry(part.width,part.height,part.depth),mat);mesh.position.set(part.x,part.y,part.z);mesh.name=part.name;mesh.userData.partId=part.id;mesh.castShadow=true;mesh.receiveShadow=true;group.add(mesh);}return group;
 }
 export function extrude(polygon:clipping.Polygon,height:number,material:ThreeMaterial){
  const shape=new Shape(polygon[0].map(([x,z])=>new Vector2(x,-z)));

@@ -1,0 +1,3 @@
+import {createProject} from '../domain/project';import {rectangle} from '../domain/geometry';import {createFurniture} from '../domain/furniture';
+export const benchmarkCounts={Small:6,Typical:40,Heavy:160,Stress:600} as const;
+export function benchmarkScene(name:keyof typeof benchmarkCounts){const p=createProject(),count=benchmarkCounts[name],columns=Math.ceil(Math.sqrt(count));p.name='Benchmark '+name;p.rooms=[rectangle('benchmark-room','Контрольная сцена',columns*2.6+2,Math.ceil(count/columns)*2.6+2)];p.variants[0].furniture=Array.from({length:count},(_,i)=>{const f=createFurniture((['wardrobe','shelf','cabinet','table'] as const)[i%4]);f.id='benchmark-furniture-'+i;f.x=2+(i%columns)*2.6;f.z=2+Math.floor(i/columns)*2.6;return f;});return p;}

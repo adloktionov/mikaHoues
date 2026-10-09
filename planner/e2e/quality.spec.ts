@@ -1,0 +1,7 @@
+import {test,expect} from '@playwright/test';
+test('quality cycles release resources and preserve project data',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');await page.getByRole('button',{name:'Создать первую комнату'}).click();await page.getByRole('button',{name:'Каталог',exact:true}).click();await page.getByRole('button',{name:'Добавить шкаф',exact:true}).click();await page.getByRole('button',{name:'3D',exact:true}).click();
+ const read=()=>page.evaluate(async()=>{const {useEditor}=await import('/src/stores/editor.ts');return JSON.stringify(useEditor().document);});const original=await read();const select=page.getByLabel('Качество 3D'),stats=page.getByTestId('scene-stats');let baseline='';
+ for(let cycle=0;cycle<3;cycle++)for(const level of [1,2,3,4,5,1]){await select.selectOption(String(level));await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));const geometry=await stats.getAttribute('data-geometries'),textures=await stats.getAttribute('data-textures');if(level===1){const resources=geometry+'/'+textures;if(!baseline)baseline=resources;expect(resources).toBe(baseline);expect(Number(await stats.getAttribute('data-triangles'))).toBeLessThan(250);}expect(await read()).toBe(original);}
+ expect(errors).toEqual([]);await page.reload();await page.getByRole('button',{name:'3D',exact:true}).click();await expect(select).toHaveValue('1');
+});
