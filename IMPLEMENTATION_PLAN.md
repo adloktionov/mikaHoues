@@ -10,6 +10,8 @@
 ## Global Constraints
 Preserve project/. No backend. Metres. Real 1.5 SKUs only. No invented masonry certification. Five quality profiles. Browser-only FBX import. Source assets retained. UI in Russian. Branch codex/house-planner-v1.
 
+Latest user override: local commits only; do not push, create worktrees/chats or parallel implementers. Completed checks are recorded in docs/STATUS.md and must not be repeated without a new regression concern. The original checklist below is historical planning; docs/STATUS.md is the authoritative progress ledger.
+
 ## Review Focus
 - Invalid archives, ZIP expansion, missing asset references: reject transactionally.
 - Concurrent saves/project switching: no stale overwrite or lost unsaved edits.
@@ -67,5 +69,5 @@ Files: src/components/FurnitureInspector.vue, domain/furniture.ts.
 Files: src/render/{photo,lighting}.ts, browser tests, README.md, PROJECT_STATUS.md.
 - [ ] RED: PNG export restores mode/camera/quality, local HDRI validation, light edits roundtrip.
 - [ ] Implement Photo Mode and finally lighting/HDRI; verify benchmark matrix.
-- [ ] Run typecheck, unit tests, build, browser scenarios, legacy tests; independent QA review; fix findings; commit and push authorized feature branch.
+- [ ] Complete final integration/visual QA and review, fix findings and commit locally. Preserve completed checks; do not repeat legacy tests or push (latest user override).
 - [ ] Document measured results and limitations; never label unverified stages complete.
