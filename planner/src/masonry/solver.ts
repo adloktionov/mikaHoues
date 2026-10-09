@@ -40,6 +40,16 @@ function clean(poly:Poly):Poly{return poly.map(rings=>rings.map(points=>{
 const polygon=(p:Point[]):Poly=>[[ring(p)]];
 const subtract=(a:Poly,b:Poly):Poly=>a.length&&b.length?clean(clipping.difference(a,b)):a;
 const union=(a:Poly,b:Poly):Poly=>a.length?clean(clipping.union(a,b)):b;
+/** Reserve mortar along previously assigned faces before allocating the next wall. */
+function clearance(shape:Poly,width:number):Poly{
+ if(width<=0)return shape;let expanded=shape;
+ for(const rings of shape)for(const points of rings)for(let i=0;i<points.length;i++){
+  const a=points[i],b=points[(i+1)%points.length],length=Math.hypot(b[0]-a[0],b[1]-a[1]);if(length<EPS)continue;
+  const dx=(b[0]-a[0])/length,dz=(b[1]-a[1])/length;
+  const border=[[-width,-width],[length+width,-width],[length+width,width],[-width,width]].map(([s,n])=>({x:a[0]+dx*s-dz*n,z:a[1]+dz*s+dx*n}));
+  expanded=union(expanded,polygon(border));
+ }return expanded;
+}
 function envelope(w:Wall,rooms:ProjectDocument['rooms']):Poly{let shape=polygon(wallPolygon(w,0,w.length,w.thickness));for(const r of rooms)shape=subtract(shape,polygon(r.points));return shape;}
 function extent(w:Wall,p:Point[]){const dx=(w.b.x-w.a.x)/w.length,dz=(w.b.z-w.a.z)/w.length;const positions=p.map(v=>(v.x-w.a.x)*dx+(v.z-w.a.z)*dz);return {from:Math.min(...positions),to:Math.max(...positions)};}
 /** Physical corner regions have exactly one owner, alternating at each row within a material group. */
@@ -52,13 +62,14 @@ export function solveMasonry(p:ProjectDocument):MasonryResult{
  const previous=new Map<string,number[]>();
  for(const profileId of [...new Set(walls.map(w=>w.profileId))]){
   const m=p.profiles.find(m=>m.id===profileId)!;profileIssues(m).forEach(s=>issue('',s,'profile'));
+  const exteriorWithJoint=clearance(exterior,m.verticalJoint);
   const group=walls.filter(w=>w.profileId===profileId);const count=Math.ceil(p.height/(m.height+m.horizontalJoint));
   if(count*group.length>20000){issue('','Слишком много рядов. Уменьшите план или увеличьте размер элемента.','limit');continue;}
   for(let row=0;row<count;row++){
    const y=row*(m.height+m.horizontalJoint),height=Math.min(m.height,p.height-y);if(height<EPS)continue;
    const ordered=[...group].sort((a,b)=>{const horizontal=(w:Wall)=>Math.abs(w.b.x-w.a.x)>Math.abs(w.b.z-w.a.z);return Number(horizontal(row%2?b:a))-Number(horizontal(row%2?a:b))||a.id.localeCompare(b.id);});
    let owned:Poly=[];
-   for(const w of ordered){let shape=envelopes.get(w.id)!;if(w.roomIds.length===2&&profileId!==p.exteriorProfileId)shape=subtract(shape,exterior);shape=subtract(shape,owned);owned=union(owned,shape);
+   for(const w of ordered){let shape=envelopes.get(w.id)!;if(w.roomIds.length===2&&profileId!==p.exteriorProfileId)shape=subtract(shape,exteriorWithJoint);shape=subtract(shape,owned);owned=union(owned,clearance(shape,m.verticalJoint));
     const openings=p.openings.filter(o=>o.wallId===w.id);const breaks=[y,y+height,...openings.flatMap(o=>[o.sill,o.sill+o.height]).filter(v=>v>y+EPS&&v<y+height-EPS)].sort((a,b)=>a-b);const joints:number[]=[];
     for(let bi=0;bi<breaks.length-1;bi++){const bottom=breaks[bi],top=breaks[bi+1];let band=shape;
      for(const o of openings)if(bottom<o.sill+o.height-EPS&&top>o.sill+EPS)band=subtract(band,polygon(wallPolygon(w,o.offset-o.width/2,o.offset+o.width/2)));
