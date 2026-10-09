@@ -5,3 +5,7 @@ describe('parametric furniture',()=>{
  it('detects wall intrusions without preventing deliberate placement',()=>{const p=createProject();p.rooms=[rectangle('r','R',4,5)];const f=createFurniture('table');f.x=4;f.z=2;p.variants[0].furniture=[f];expect(placementWarnings(p,f).length).toBeGreaterThan(0);f.x=2;expect(placementWarnings(p,f)).toEqual([]);});
  it('rejects shelves intersecting each other and preserves per-part materials',()=>{const p=createProject(),f=createFurniture('shelf');p.variants[0].furniture=[f];f.shelfPositions=Array(f.shelves).fill(.5);expect(()=>validateProject(p)).toThrow();f.shelfPositions=[];f.partMaterials['side-left']={...f.material,color:'#ff0000'};expect(furnitureParts(f).find(p=>p.id==='side-left')!.material.color).toBe('#ff0000');expect(f.material.color).not.toBe('#ff0000');});
 });
+it('rejects depth below board thickness and tables smaller than their legs',()=>{
+ const p=createProject(),f=createFurniture('shelf');p.variants[0].furniture=[f];f.board=.08;f.depth=.02;expect(()=>validateProject(p)).toThrow();
+ const table=createFurniture('table');p.variants[0].furniture=[table];table.width=.05;expect(()=>validateProject(p)).toThrow();
+});
