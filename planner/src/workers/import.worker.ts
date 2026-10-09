@@ -1,3 +1,5 @@
+import {optimizeGlb} from '../assets/optimize';
+import {MeshoptDecoder} from 'meshoptimizer';
 import {Box3,Group,LoadingManager,Mesh,Texture,Loader,Vector3} from 'three';
 import {FBXLoader} from 'three/addons/loaders/FBXLoader.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
@@ -42,7 +44,7 @@ self.onmessage=async({data}:{data:{files:File[];mainName:string;scale:number}})=
    await Promise.all(textures);
    root.scale.multiplyScalar((Number(root.userData.unitScaleFactor)||1)/100);
   }else{
-   const gltf=await new GLTFLoader(manager).parseAsync(ext==='gltf'?new TextDecoder().decode(bytes):bytes,'');root=gltf.scene;animations=gltf.animations;
+   const gltf=await new GLTFLoader(manager).setMeshoptDecoder(MeshoptDecoder).parseAsync(ext==='gltf'?new TextDecoder().decode(bytes):bytes,'');root=gltf.scene;animations=gltf.animations;
   }
   root.scale.multiplyScalar(data.scale);root.updateMatrixWorld(true);
   let box=new Box3().setFromObject(root);
@@ -64,8 +66,10 @@ self.onmessage=async({data}:{data:{files:File[];mainName:string;scale:number}})=
   self.postMessage({progress:'Преобразование в GLB…'});
   const glb=await new GLTFExporter().parseAsync(root,{binary:true,animations,onlyVisible:false});
   if(!(glb instanceof ArrayBuffer))throw new Error('Не удалось сохранить GLB');
+  self.postMessage({progress:'Оптимизация и облегчённая версия…'});
+  const optimized=await optimizeGlb(glb);
   stats.processingMs=performance.now()-started;
-  self.postMessage({glb,stats,warnings:[...new Set(warnings)]},{transfer:[glb]});
+  self.postMessage({...optimized,stats,warnings:[...new Set(warnings)]},{transfer:[optimized.glb,optimized.lowGlb]});
  }catch(error){self.postMessage({error:error instanceof Error?error.message:String(error)});}
  finally{console.warn=originalWarn;urls.forEach(URL.revokeObjectURL);bitmaps.forEach(b=>b.close());}
 };

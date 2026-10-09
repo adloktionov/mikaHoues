@@ -13,7 +13,7 @@ export function importModel(files:File[],mainName:string,options:ImportOptions):
    if(data.progress){options.onProgress?.(data.progress);return;}
    cleanup();
    if(data.error){reject(new Error(data.error));return;}
-   resolve({id:crypto.randomUUID(),name:mainName,kind:'model',originals:files.map(f=>({name:f.name,blob:f})),glb:new Blob([data.glb],{type:'model/gltf-binary'}),stats:data.stats,warnings:data.warnings});
+   resolve({id:crypto.randomUUID(),name:mainName,kind:'model',originals:files.map(f=>({name:f.name,blob:f})),glb:new Blob([data.glb],{type:'model/gltf-binary'}),lowGlb:data.lowGlb?new Blob([data.lowGlb],{type:'model/gltf-binary'}):undefined,stats:data.stats,warnings:data.warnings});
   };
   worker.postMessage({files,mainName,scale:options.scale});
  });
