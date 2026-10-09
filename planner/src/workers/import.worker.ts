@@ -16,12 +16,14 @@ self.onmessage=async({data}:{data:{files:File[];mainName:string;scale:number;rot
   if(data.files.reduce((sum,f)=>sum+f.size,0)>512*1024*1024)throw new Error('Выберите файлы общим размером до 512 МБ');
   const ext=main.name.split('.').pop()?.toLowerCase();
   if(!['fbx','glb','gltf'].includes(ext||''))throw new Error('Поддерживаются FBX, GLB и glTF');
-  const manager=new LoadingManager();
+  const manager=new LoadingManager(),resourceErrors:string[]=[];
+  manager.onError=url=>resourceErrors.push('Не удалось прочитать связанный файл: '+url);
   const basename=(name:string)=>decodeURIComponent(name.replaceAll('\\','/').split('/').pop()||'');
   const resolveLocal=(url:string)=>{
    if(url.startsWith('blob:')||url.startsWith('data:'))return url;
-   const file=data.files.find(f=>f.name===url)||data.files.find(f=>f.name===basename(url));
-   if(!file)throw new Error(`Не найден связанный файл: ${basename(url)}. Выберите его вместе с моделью.`);
+   const exact=data.files.filter(f=>f.name===url),matches=exact.length?exact:data.files.filter(f=>f.name===basename(url));
+   if(matches.length!==1){const message=matches.length?`Неоднозначное имя связанного файла: ${basename(url)}`:`Не найден связанный файл: ${basename(url)}. Выберите его вместе с моделью.`;resourceErrors.push(message);throw new Error(message);}
+   const file=matches[0];
    const local=URL.createObjectURL(file);urls.push(local);return local;
   };
   manager.setURLModifier(resolveLocal);
@@ -46,6 +48,8 @@ self.onmessage=async({data}:{data:{files:File[];mainName:string;scale:number;rot
   }else{
    const gltf=await new GLTFLoader(manager).setMeshoptDecoder(MeshoptDecoder).parseAsync(ext==='gltf'?new TextDecoder().decode(bytes):bytes,'');root=gltf.scene;animations=gltf.animations;
   }
+  // GLTFLoader can recover from a missing texture with a null map. Do not silently accept that loss.
+  if(resourceErrors.length)throw new Error(resourceErrors[0]);
   const rotation=data.rotation??[0,0,0];if(rotation.length!==3||!rotation.every(n=>Number.isFinite(n)&&Math.abs(n)<=360))throw new Error('Неверный поворот модели');
   const oriented=new Group();oriented.add(root);oriented.rotation.set(...rotation.map(n=>n*Math.PI/180) as [number,number,number]);root=oriented;
   root.scale.multiplyScalar(data.scale);root.updateMatrixWorld(true);
