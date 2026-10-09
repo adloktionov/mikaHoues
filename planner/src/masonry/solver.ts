@@ -28,9 +28,18 @@ export function layoutSpan(from:number,to:number,m:MasonryProfile,previousJoints
   }
  }return null;
 }
+// Boolean clipping can leave zero-width spikes at coincident wall corners.
+// Snap only numerical noise (10 nanometres), then remove collapsed and collinear vertices.
+function clean(poly:Poly):Poly{return poly.map(rings=>rings.map(points=>{
+ const p=points.map(([x,z])=>[Math.round(x*1e8)/1e8,Math.round(z*1e8)/1e8] as [number,number]);
+ if(p.length>1&&Math.hypot(p[0][0]-p.at(-1)![0],p[0][1]-p.at(-1)![1])<EPS)p.pop();
+ let changed=true;while(changed&&p.length>=3){changed=false;for(let i=0;i<p.length;i++){const a=p[(i+p.length-1)%p.length],b=p[i],c=p[(i+1)%p.length];const cross=(b[0]-a[0])*(c[1]-b[1])-(b[1]-a[1])*(c[0]-b[0]);
+  if(Math.hypot(a[0]-b[0],a[1]-b[1])<EPS||Math.abs(cross)<1e-10){p.splice(i,1);changed=true;break;}
+ }}return p;
+ }).filter(r=>r.length>=3&&area(r.map(([x,z])=>({x,z})))>EPS*EPS)).filter(r=>r.length>0);}
 const polygon=(p:Point[]):Poly=>[[ring(p)]];
-const subtract=(a:Poly,b:Poly):Poly=>a.length&&b.length?clipping.difference(a,b):a;
-const union=(a:Poly,b:Poly):Poly=>a.length?clipping.union(a,b):b;
+const subtract=(a:Poly,b:Poly):Poly=>a.length&&b.length?clean(clipping.difference(a,b)):a;
+const union=(a:Poly,b:Poly):Poly=>a.length?clean(clipping.union(a,b)):b;
 function envelope(w:Wall,rooms:ProjectDocument['rooms']):Poly{let shape=polygon(wallPolygon(w,0,w.length,w.thickness));for(const r of rooms)shape=subtract(shape,polygon(r.points));return shape;}
 function extent(w:Wall,p:Point[]){const dx=(w.b.x-w.a.x)/w.length,dz=(w.b.z-w.a.z)/w.length;const positions=p.map(v=>(v.x-w.a.x)*dx+(v.z-w.a.z)*dz);return {from:Math.min(...positions),to:Math.max(...positions)};}
 /** Physical corner regions have exactly one owner, alternating at each row within a material group. */
@@ -56,9 +65,10 @@ export function solveMasonry(p:ProjectDocument):MasonryResult{
      for(const poly of band){if(poly.length!==1){issue(w.id,'Сложный контур участка кладки требует проверки.','shape',row);continue;}const points=poly[0].map(([x,z])=>({x,z})),range=extent(w,points);const pieces=layoutSpan(range.from,range.to,m,previous.get(w.id)||[]);
       if(!pieces){issue(w.id,'Не удалось совместить перевязку, размер участка и центральные обрезки ≥ половины. Проверьте размеры или наличие удлинённого изделия.','bond/cut',row);continue;}
       for(const [i,part] of pieces.entries()){
-       const clipped=clipping.intersection([poly],polygon(wallPolygon(w,part.start,part.start+part.length)));
+       const clipped=clean(clipping.intersection([poly],polygon(wallPolygon(w,part.start,part.start+part.length))));
        if(clipped.length!==1||clipped[0].length!==1){issue(w.id,'Деталь распалась на несколько частей.','shape',row);continue;}
        const footprint=clipped[0][0].map(([x,z])=>({x,z}));if(area(footprint)<EPS)continue;
+       const physical=extent(w,footprint);if(physical.to-physical.from<m.length/2-EPS||Math.abs(physical.from-part.start)>EPS||Math.abs(physical.to-part.start-part.length)>EPS){issue(w.id,'Фактическая длина детали после обработки угла не соответствует раскладке.','physical-cut',row);continue;}
        const id=`${w.id}:${row}:${bi}:${result.pieces.length}`,sku=m.stock.find(s=>s.id===part.stockId)!;
        // Reuse only full-height horizontal leftovers; vertically sliced scraps are not treated as reusable stock.
        let stock:StockUse|undefined;
