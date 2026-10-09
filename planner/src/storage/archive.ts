@@ -19,6 +19,15 @@ export async function unpackProject(bytes:Uint8Array,maxBytes=512*1024*1024):Pro
  const blob=(path:string,type:string)=>{if(!files[path])throw new Error('Отсутствует ресурс '+path);return new Blob([files[path].slice().buffer as ArrayBuffer],{type});};const ids=new Set<string>();
  const assets:AssetRecord[]=manifest.assets.map((a:ManifestAsset)=>{if(!a||typeof a.id!=='string'||ids.has(a.id)||typeof a.name!=='string'||!['model','texture','hdri'].includes(a.kind)||!Array.isArray(a.originals)||!Array.isArray(a.warnings))throw new Error('Некорректный ресурс');ids.add(a.id);return {id:a.id,name:a.name,kind:a.kind,stats:a.stats,warnings:a.warnings,originals:a.originals.map(o=>({name:o.name,blob:blob(o.path,o.type)})),glb:a.glbPath?blob(a.glbPath,'model/gltf-binary'):undefined,lowGlb:a.lowPath?blob(a.lowPath,'model/gltf-binary'):undefined,thumbnail:a.thumbnailPath?blob(a.thumbnailPath,'image/png'):undefined};});
  for(const id of referencedAssets(document))if(!ids.has(id))throw new Error('Архив не содержит используемую модель или текстуру: '+id);
+ const byId=new Map(assets.map(a=>[a.id,a]));
+ for(const a of assets){
+  if(a.originals.some(o=>typeof o.name!=='string'||!o.name)||a.warnings.some(w=>typeof w!=='string'))throw new Error('Некорректные сведения о ресурсе');
+  if(a.stats){const stats=a.stats;const numbers=[stats.triangles,stats.vertices,stats.meshes,stats.materials,stats.textures,stats.texturePixels,stats.estimatedBytes,stats.processingMs];if(numbers.some(n=>typeof n!=='number'||!Number.isFinite(n)||n<0)||!Array.isArray(stats.bounds)||stats.bounds.length!==3||stats.bounds.some(n=>typeof n!=='number'||!Number.isFinite(n)||n<0))throw new Error('Некорректные размеры или статистика модели');}
+ }
+ const requireAsset=(id:string,kind:AssetRecord['kind'])=>{const a=byId.get(id);if(!a||a.kind!==kind)throw new Error('Тип ресурса не соответствует ссылке: '+id);if(kind==='model'&&(!a.glb||!a.stats||!a.stats.bounds.some(n=>n>0)))throw new Error('Не найдены модель или её размеры: '+id);if(kind!=='model'&&!a.originals.length)throw new Error('Не найден оригинал ресурса: '+id);};
+ for(const variant of document.variants)for(const f of variant.furniture){if(f.assetId)requireAsset(f.assetId,'model');for(const material of [f.material,...Object.values(f.partMaterials)])if(material.textureAssetId)requireAsset(material.textureAssetId,'texture');}
+ if(document.lighting.hdriAssetId)requireAsset(document.lighting.hdriAssetId,'hdri');
+
  return {document,assets};
 }
 export function referencedAssets(p:ProjectDocument){const ids=new Set<string>(p.catalogAssetIds??[]);for(const v of p.variants)for(const f of v.furniture){if(f.assetId)ids.add(f.assetId);for(const m of [f.material,...Object.values(f.partMaterials)])if(m.textureAssetId)ids.add(m.textureAssetId);}if(p.lighting.hdriAssetId)ids.add(p.lighting.hdriAssetId);return ids;}
