@@ -1,15 +1,13 @@
-# House Planner status
+# House Planner — first release implemented
 
-Implementation in progress on codex/house-planner-v1. Continuation state: docs/STATUS.md.
+Status: DONE. Branch: codex/house-planner-v1. Local commits only; no push or merge. Original project/ is unchanged. The new application is in planner/.
 
-- Foundation and room geometry committed; original project/ unchanged.
-- Masonry rows, actual corner pieces, joints, stock/offcuts/waste bill, CSV and incomplete-layout diagnostics implemented. Brick bonding is a project geometry rule, not normative certification.
-- Furniture catalog, independent layout variants, dimensional controls, 2D/3D placement and 3D/Top/Walk implemented.
-- Five quality profiles, real proxies, imported low/full models, shadows/AO and resource disposal implemented. Imported geometry/texture cycling is checked; the benchmark matrix still describes procedural scenes only.
-- Browser FBX and GLB/glTF import: external files, orientation/scale, optimization, preview, cancellation, original retention and portable catalog/archive implemented. Missing textures fail explicitly. A >60k-triangle model and cancellation were tested, not arbitrary large files.
-- Furniture construction and part materials, Photo PNG with settings restoration, sun/point/spot editor and local Radiance HDRI implemented with targeted checks.
-- Remaining: final integration and visual QA (especially HDRI upload UI, nonuniform panorama orientation, production worker bundle and end-to-end photo download), imported-scene benchmark coverage, release instructions and honest limitations. Do not declare release complete yet. Weak hardware has not been tested.
+Implemented: room/shared-wall editing and openings; masonry courses and separate material/stock/offcut/waste bill; furniture, independent layouts and 2D/3D/Top/Walk; five quality profiles with imported LOD/resource disposal; local FBX and GLB/glTF import/preview/optimization/catalog/archive; editable furniture parts/materials; PNG capture; sun/local lights and Radiance HDRI.
 
-Evidence for individual steps is recorded in docs/STATUS.md. Local performance data: planner/benchmarks/README.md. Weak-device performance has not been verified.
+User instructions: [docs/USER_GUIDE.md](docs/USER_GUIDE.md). Open http://127.0.0.1:5174/ while the development server runs. QA evidence: [docs/RELEASE_QA.md](docs/RELEASE_QA.md). Detailed work ledger: docs/STATUS.md.
 
-Development URL: http://127.0.0.1:5174/ while the local server runs. Local commits only; pushing is prohibited by the latest user instruction.
+Final build/typecheck and production workflow passed on 2026-10-10. Independent sequential review found two P2 defects; both were reproduced and fixed. Additional archive-integrity and save-race defects were fixed during final QA. Completed legacy checks were not rerun, as requested.
+
+Limits: measurements cover this Mac/Chrome, not weak hardware or all browsers. Imported benchmarks reuse one asset; they do not simulate hundreds of unique large models. Brick bonding is a project geometry rule, not structural/normative certification. Incompatible masonry remains visibly incomplete. Arbitrary FBX/glTF compatibility, OBJ/USD, prices, foundation, roof and collaborative accounts are outside this release.
+
+Automatic continuation house-planner-2 is disabled because the implementation is complete. No further work without a new user request.
