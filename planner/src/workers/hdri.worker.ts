@@ -1,0 +1,2 @@
+import {decodeEnvironment} from '../assets/hdri-decode';
+self.onmessage=async({data}:{data:{blob:Blob;maxWidth:number}})=>{try{if(data.blob.size>64*1024*1024)throw new Error('HDRI должна быть не больше 64 МБ');const result=decodeEnvironment(await data.blob.arrayBuffer(),data.maxWidth);self.postMessage(result,{transfer:[result.data.buffer]});}catch(error){self.postMessage({error:(error as Error).message});}};

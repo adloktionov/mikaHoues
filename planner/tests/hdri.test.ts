@@ -1,0 +1,5 @@
+import {it,expect} from 'vitest';
+import {decodeEnvironment} from '../src/assets/hdri-decode';
+function hdr(w=8,h=4){const header=new TextEncoder().encode(`#?RADIANCE\nFORMAT=32-bit_rle_rgbe\n\n-Y ${h} +X ${w}\n`);const bytes=new Uint8Array(header.length+w*h*4);bytes.set(header);for(let i=header.length;i<bytes.length;i+=4)bytes.set([128,64,32,129],i);return bytes.buffer;}
+it('decodes linear HDR values and makes a bounded equirectangular representation',()=>{const a=decodeEnvironment(hdr(),4);expect([a.width,a.height]).toEqual([4,2]);expect(a.data.length).toBe(32);expect(a.data[0]).toBeGreaterThan(.9);expect(a.data[0]).toBeLessThan(1.1);expect(a.data[3]).toBe(1);});
+it('rejects invalid, oversized and non-equirectangular HDR before allocating pixels',()=>{expect(()=>decodeEnvironment(new Uint8Array([1,2,3]).buffer,256)).toThrow();expect(()=>decodeEnvironment(new TextEncoder().encode('#?RADIANCE\nFORMAT=32-bit_rle_rgbe\n\n-Y 100000 +X 200000\n').buffer,256)).toThrow(/размер/);expect(()=>decodeEnvironment(hdr(8,8),256)).toThrow(/2:1/);});
