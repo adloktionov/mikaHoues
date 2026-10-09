@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {computed,onBeforeUnmount,ref,shallowRef} from 'vue';
+import {defineAsyncComponent,computed,onBeforeUnmount,ref,shallowRef} from 'vue';
 import {useEditor} from '../stores/editor';
 import {importModel} from '../assets/importer';
 import type {AssetRecord} from '../domain/types';
-import ModelPreview from './ModelPreview.vue';
+const ModelPreview=defineAsyncComponent(()=>import('./ModelPreview.vue'));
 const e=useEditor(),opened=ref(false),files=shallowRef<File[]>([]),main=ref(''),scale=ref(1),rx=ref(0),ry=ref(0),rz=ref(0),result=shallowRef<AssetRecord>(),progress=ref(''),error=ref(''),busy=ref(false),saving=ref(false);let controller:AbortController|undefined;
 const models=computed(()=>files.value.filter(f=>/\.(fbx|glb|gltf)$/i.test(f.name)));
 function choose(event:Event){files.value=Array.from((event.target as HTMLInputElement).files??[]);main.value=models.value[0]?.name??'';result.value=undefined;error.value='';}
