@@ -1,0 +1,4 @@
+import {Group,PointLight,SpotLight} from 'three';
+import type {LightDefinition} from '../domain/types';
+export function buildLights(definitions:LightDefinition[],quality:number){const group=new Group();if(quality<=1)return group;const shadows=quality>=5?4:quality>=4?2:quality>=3?1:0;for(const [index,l] of definitions.entries()){const light=l.type==='spot'?new SpotLight(l.color,l.intensity,0,l.angle,.3,2):new PointLight(l.color,l.intensity,0,2);light.name=l.id;light.position.set(l.x,l.y,l.z);light.castShadow=index<shadows;light.shadow.mapSize.set(quality>=4?1024:512,quality>=4?1024:512);light.shadow.normalBias=.025;if(light instanceof SpotLight){light.target.position.set(l.targetX,l.targetY,l.targetZ);group.add(light.target);}group.add(light);}return group;}
+export function disposeLights(group:Group){group.traverse(o=>{if(o instanceof SpotLight||o instanceof PointLight){o.shadow.map?.dispose();o.shadow.mapPass?.dispose();}});group.removeFromParent();}
