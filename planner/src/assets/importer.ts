@@ -1,5 +1,5 @@
 import type { AssetRecord } from '../domain/types';
-export interface ImportOptions { scale:number; signal?:AbortSignal; onProgress?:(message:string)=>void }
+export interface ImportOptions { scale:number; rotation?:[number,number,number]; signal?:AbortSignal; onProgress?:(message:string)=>void }
 /** One worker per import: cancellation also stops parsers that have no cooperative abort API. */
 export function importModel(files:File[],mainName:string,options:ImportOptions):Promise<AssetRecord>{
  return new Promise((resolve,reject)=>{
@@ -15,6 +15,6 @@ export function importModel(files:File[],mainName:string,options:ImportOptions):
    if(data.error){reject(new Error(data.error));return;}
    resolve({id:crypto.randomUUID(),name:mainName,kind:'model',originals:files.map(f=>({name:f.name,blob:f})),glb:new Blob([data.glb],{type:'model/gltf-binary'}),lowGlb:data.lowGlb?new Blob([data.lowGlb],{type:'model/gltf-binary'}):undefined,stats:data.stats,warnings:data.warnings});
   };
-  worker.postMessage({files,mainName,scale:options.scale});
+  worker.postMessage({files,mainName,scale:options.scale,rotation:options.rotation??[0,0,0]});
  });
 }

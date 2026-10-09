@@ -26,5 +26,5 @@ export async function unpackProject(bytes:Uint8Array,maxBytes=512*1024*1024):Pro
  for(const id of referencedAssets(document))if(!ids.has(id))throw new Error('Архив не содержит используемую модель или текстуру: '+id);
  return {document,assets};
 }
-export function referencedAssets(p:ProjectDocument){const ids=new Set<string>();for(const v of p.variants)for(const f of v.furniture){if(f.assetId)ids.add(f.assetId);for(const m of [f.material,...Object.values(f.partMaterials)])if(m.textureAssetId)ids.add(m.textureAssetId);}if(p.lighting.hdriAssetId)ids.add(p.lighting.hdriAssetId);return ids;}
+export function referencedAssets(p:ProjectDocument){const ids=new Set<string>(p.catalogAssetIds??[]);for(const v of p.variants)for(const f of v.furniture){if(f.assetId)ids.add(f.assetId);for(const m of [f.material,...Object.values(f.partMaterials)])if(m.textureAssetId)ids.add(m.textureAssetId);}if(p.lighting.hdriAssetId)ids.add(p.lighting.hdriAssetId);return ids;}
 export function download(data:Blob,name:string){const url=URL.createObjectURL(data),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}

@@ -6,7 +6,7 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
 import type {AssetStats} from '../domain/types';
 
-self.onmessage=async({data}:{data:{files:File[];mainName:string;scale:number}})=>{
+self.onmessage=async({data}:{data:{files:File[];mainName:string;scale:number;rotation:[number,number,number]}})=>{
  const started=performance.now(),urls:string[]=[],bitmaps:ImageBitmap[]=[],warnings:string[]=[];
  const originalWarn=console.warn;
  console.warn=(...args:unknown[])=>{warnings.push(args.map(String).join(' '));};
@@ -46,6 +46,8 @@ self.onmessage=async({data}:{data:{files:File[];mainName:string;scale:number}})=
   }else{
    const gltf=await new GLTFLoader(manager).setMeshoptDecoder(MeshoptDecoder).parseAsync(ext==='gltf'?new TextDecoder().decode(bytes):bytes,'');root=gltf.scene;animations=gltf.animations;
   }
+  const rotation=data.rotation??[0,0,0];if(rotation.length!==3||!rotation.every(n=>Number.isFinite(n)&&Math.abs(n)<=360))throw new Error('Неверный поворот модели');
+  const oriented=new Group();oriented.add(root);oriented.rotation.set(...rotation.map(n=>n*Math.PI/180) as [number,number,number]);root=oriented;
   root.scale.multiplyScalar(data.scale);root.updateMatrixWorld(true);
   let box=new Box3().setFromObject(root);
   if(box.isEmpty())throw new Error('В файле нет геометрии для отображения');
