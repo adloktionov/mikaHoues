@@ -1,4 +1,5 @@
-import {zip,unzip, strToU8,strFromU8} from 'fflate';
+import {unzipChecked} from './unzip';
+import {zip, strToU8,strFromU8} from 'fflate';
 import type {ProjectDocument,AssetRecord} from '../domain/types';
 import {validateProject} from '../domain/project';
 type ManifestAsset=Omit<AssetRecord,'originals'|'glb'|'lowGlb'|'thumbnail'> & { originals:{name:string;path:string;type:string}[];glbPath?:string;lowPath?:string;thumbnailPath?:string };
@@ -12,13 +13,7 @@ export async function packProject(document:ProjectDocument,assets:AssetRecord[])
  return new Promise((resolve,reject)=>zip(files,{level:1},(error,data)=>error?reject(error):resolve(data)));
 }
 export async function unpackProject(bytes:Uint8Array,maxBytes=512*1024*1024):Promise<{document:ProjectDocument;assets:AssetRecord[]}>{
- // Inspect the central directory before decompression, including every original size.
- const view=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);let end=-1;
- for(let i=bytes.length-22;i>=Math.max(0,bytes.length-65557);i--)if(view.getUint32(i,true)===0x06054b50){end=i;break;}
- if(end<0)throw new Error('Повреждённый архив');const count=view.getUint16(end+10,true);let pos=view.getUint32(end+16,true),total=0;
- if(count>30000)throw new Error('Слишком много файлов');
- for(let i=0;i<count;i++){if(pos+46>bytes.length||view.getUint32(pos,true)!==0x02014b50)throw new Error('Повреждённый каталог архива');total+=view.getUint32(pos+24,true);if(total>maxBytes)throw new Error('Распакованный размер превышает доступный бюджет памяти');const n=view.getUint16(pos+28,true),extra=view.getUint16(pos+30,true),comment=view.getUint16(pos+32,true);const path=strFromU8(bytes.subarray(pos+46,pos+46+n));if(path.includes('..')||path.startsWith('/')||path.includes('\\')||path.includes('__proto__'))throw new Error('Недопустимый путь');pos+=46+n+extra+comment;}
- const files=await new Promise<Record<string,Uint8Array>>((resolve,reject)=>unzip(bytes,(e,data)=>e?reject(new Error('Не удалось распаковать проект')):resolve(data)));
+ const files=await unzipChecked(bytes,maxBytes);
  if(!files['project.json']||!files['manifest.json'])throw new Error('Это не архив House Planner');const document=validateProject(JSON.parse(strFromU8(files['project.json'])));const manifest=JSON.parse(strFromU8(files['manifest.json']));
  if(manifest.version!==1||!Array.isArray(manifest.assets)||manifest.assets.length>10000)throw new Error('Неподдерживаемый каталог ресурсов');
  const blob=(path:string,type:string)=>{if(!files[path])throw new Error('Отсутствует ресурс '+path);return new Blob([files[path].slice().buffer as ArrayBuffer],{type});};const ids=new Set<string>();
