@@ -4,6 +4,7 @@ import type {ProjectDocument,AssetRecord} from '../domain/types';
 import {validateProject} from '../domain/project';
 type ManifestAsset=Omit<AssetRecord,'originals'|'glb'|'lowGlb'|'thumbnail'> & { originals:{name:string;path:string;type:string}[];glbPath?:string;lowPath?:string;thumbnailPath?:string };
 export async function packProject(document:ProjectDocument,assets:AssetRecord[]):Promise<Uint8Array>{
+ const available=new Set(assets.map(a=>a.id));for(const id of referencedAssets(document))if(!available.has(id))throw new Error('Не найден используемый ресурс для экспорта: '+id);
  const files:Record<string,Uint8Array>={'project.json':strToU8(JSON.stringify(validateProject(document)))};const manifest:ManifestAsset[]=[];
  for(let i=0;i<assets.length;i++){const a=assets[i],base='assets/'+i+'/';const entry:ManifestAsset={id:a.id,name:a.name,kind:a.kind,stats:a.stats,warnings:a.warnings,originals:[]};
   for(let j=0;j<a.originals.length;j++){const o=a.originals[j],path=base+'original-'+j;files[path]=new Uint8Array(await o.blob.arrayBuffer());entry.originals.push({name:o.name,path,type:o.blob.type});}
@@ -25,6 +26,7 @@ export async function unpackProject(bytes:Uint8Array,maxBytes=512*1024*1024):Pro
   if(a.stats){const stats=a.stats;const numbers=[stats.triangles,stats.vertices,stats.meshes,stats.materials,stats.textures,stats.texturePixels,stats.estimatedBytes,stats.processingMs];if(numbers.some(n=>typeof n!=='number'||!Number.isFinite(n)||n<0)||!Array.isArray(stats.bounds)||stats.bounds.length!==3||stats.bounds.some(n=>typeof n!=='number'||!Number.isFinite(n)||n<0))throw new Error('Некорректные размеры или статистика модели');}
  }
  const requireAsset=(id:string,kind:AssetRecord['kind'])=>{const a=byId.get(id);if(!a||a.kind!==kind)throw new Error('Тип ресурса не соответствует ссылке: '+id);if(kind==='model'&&(!a.glb||!a.stats||!a.stats.bounds.some(n=>n>0)))throw new Error('Не найдены модель или её размеры: '+id);if(kind!=='model'&&!a.originals.length)throw new Error('Не найден оригинал ресурса: '+id);};
+ for(const id of document.catalogAssetIds??[]){const a=byId.get(id)!;requireAsset(id,a.kind);}
  for(const variant of document.variants)for(const f of variant.furniture){if(f.assetId)requireAsset(f.assetId,'model');for(const material of [f.material,...Object.values(f.partMaterials)])if(material.textureAssetId)requireAsset(material.textureAssetId,'texture');}
  if(document.lighting.hdriAssetId)requireAsset(document.lighting.hdriAssetId,'hdri');
 

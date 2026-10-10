@@ -24,7 +24,7 @@ function edges(p:ProjectDocument):Edge[]{return p.rooms.flatMap(room=>room.point
 export function deriveWalls(p:ProjectDocument):Wall[]{
  const all=edges(p),inside=p.profiles.find(m=>m.id===p.interiorProfileId)!,outside=p.profiles.find(m=>m.id===p.exteriorProfileId)!;const walls:Wall[]=[],seen=new Set<string>();
  for(const e of all){if(e.length<EPS)continue;const neighbours:{edge:Edge;lo:number;hi:number}[]=[];
-  for(const n of all){if(n.room.id===e.room.id||e.nx*n.nx+e.nz*n.nz>-.99999)continue;const gap=(n.a.x-e.a.x)*e.nx+(n.a.z-e.a.z)*e.nz;if(Math.abs(gap-inside.width)>.003)continue;const q=(v:Point)=>(v.x-e.a.x)*e.dx+(v.z-e.a.z)*e.dz;const lo=Math.max(0,Math.min(q(n.a),q(n.b))),hi=Math.min(e.length,Math.max(q(n.a),q(n.b)));if(hi-lo>.01)neighbours.push({edge:n,lo,hi});}
+  for(const n of all){if(n.room.id===e.room.id||e.nx*n.nx+e.nz*n.nz>-.99999)continue;const gap=(n.a.x-e.a.x)*e.nx+(n.a.z-e.a.z)*e.nz;if(Math.abs(gap-inside.width)>EPS)continue;const q=(v:Point)=>(v.x-e.a.x)*e.dx+(v.z-e.a.z)*e.dz;const lo=Math.max(0,Math.min(q(n.a),q(n.b))),hi=Math.min(e.length,Math.max(q(n.a),q(n.b)));if(hi-lo>.01)neighbours.push({edge:n,lo,hi});}
   const cuts=[...new Set([0,e.length,...neighbours.flatMap(n=>[n.lo,n.hi])].map(n=>Math.round(n*1e6)/1e6))].sort((a,b)=>a-b);
   for(let i=0;i<cuts.length-1;i++){const lo=cuts[i],hi=cuts[i+1],middle=(lo+hi)/2,n=neighbours.find(n=>middle>n.lo-EPS&&middle<n.hi+EPS);const profile=n?inside:outside;
    const id=n?'wall:'+ [e.key,n.edge.key].sort().join('|'):'wall:'+e.key+':outer:'+i;if(seen.has(id))continue;seen.add(id);
@@ -43,7 +43,7 @@ export function attachRoom(p:ProjectDocument,movingId:string,targetId:string,sid
 }
 export function moveSharedWall(p:ProjectDocument,wallId:string,delta:number){
  if(p.architectureLocked)throw new Error('Архитектура зафиксирована');const w=deriveWalls(p).find(w=>w.id===wallId);if(!w)throw new Error('Стена не найдена');
- const dx=(w.b.x-w.a.x)/w.length,dz=(w.b.z-w.a.z)/w.length;const nx=dz,nz=-dx;
+ const dx=(w.b.x-w.a.x)/w.length,dz=(w.b.z-w.a.z)/w.length;const winding=Math.sign(signedArea(p.rooms.find(r=>r.id===w.owners[0].roomId)!.points));const nx=dz*winding,nz=-dx*winding;
  for(const o of w.owners){const r=p.rooms.find(r=>r.id===o.roomId)!;const a=r.points[o.edge],b=r.points[(o.edge+1)%r.points.length];const len=distance(a,b);
   const ex=(b.x-a.x)/len,ez=(b.z-a.z)/len;
   const at=(s:number,shift=0):Point=>({id:uid(),x:a.x+ex*s+nx*shift,z:a.z+ez*s+nz*shift});
@@ -62,6 +62,31 @@ export function moveSharedWall(p:ProjectDocument,wallId:string,delta:number){
  }
 }
 export function openingErrors(p:ProjectDocument):string[]{const walls=deriveWalls(p);const result:string[]=[];for(const o of p.openings){const w=walls.find(w=>w.id===o.wallId);if(!w){result.push('Проём потерял стену: '+o.id);continue;}if(o.offset-o.width/2<0||o.offset+o.width/2>w.length||o.sill+o.height>p.height)result.push('Проём выходит за стену');for(const other of p.openings){if(other.id<=o.id||other.wallId!==o.wallId)continue;if(Math.abs(o.offset-other.offset)<(o.width+other.width)/2&&o.sill<other.sill+other.height&&other.sill<o.sill+o.height)result.push('Пересекаются проёмы');}}return [...new Set(result)];}
+
+/** Segment indices can be reused after adjacency changes. Anchor existing openings
+ * to the owning room edge instead of silently accepting the reused wall ID. */
+export function reconcileOpenings(before:ProjectDocument,after:ProjectDocument){
+ const previousWalls=deriveWalls(before),nextWalls=deriveWalls(after);
+ for(const opening of after.openings){
+  const previous=before.openings.find(o=>o.id===opening.id);
+  // Explicit opening edits and moveSharedWall's own remapping already have a destination.
+  if(!previous||JSON.stringify(previous)!==JSON.stringify(opening))continue;
+  const wall=previousWalls.find(w=>w.id===previous.wallId);if(!wall)continue;
+  const owner=wall.owners[0],oldRoom=before.rooms.find(r=>r.id===owner.roomId)!,room=after.rooms.find(r=>r.id===owner.roomId);
+  if(!room)continue;
+  const vertexId=oldRoom.points[owner.edge].id;
+  const edge=vertexId===undefined?owner.edge:room.points.findIndex(v=>v.id===vertexId);
+  const anchor=owner.start+previous.offset;
+  const candidates=nextWalls.flatMap(w=>w.owners.filter(o=>o.roomId===room.id&&o.edge===edge).map(o=>({wall:w,owner:o})));
+  const target=candidates.find(({owner:o})=>anchor>=o.start-EPS&&anchor<=o.end+EPS);
+  if(target){opening.wallId=target.wall.id;opening.offset=target.wall.owners[0]===target.owner?anchor-target.owner.start:target.owner.end-anchor;}
+  else{
+   const same=candidates.find(({wall:w,owner:o})=>w.id===previous.wallId&&Math.abs(o.start-owner.start)<EPS);
+   if(!same)throw new Error('Изменение стены лишает проём привязки. Сначала перенесите или удалите этот проём.');
+   // A shortened host remains linked, with an explicit openingErrors conflict.
+  }
+ }
+}
 export function wallPolygon(w:Wall,from=0,to=w.length,cap=0):Point[]{const dx=(w.b.x-w.a.x)/w.length,dz=(w.b.z-w.a.z)/w.length;return [[from-cap,-w.thickness/2],[to+cap,-w.thickness/2],[to+cap,w.thickness/2],[from-cap,w.thickness/2]].map(([s,n])=>({x:w.a.x+dx*s-dz*n,z:w.a.z+dz*s+dx*n}));}
 export function bendWall(p:ProjectDocument,roomId:string,edge:number,x:number,z:number){if(p.architectureLocked)throw new Error('Архитектура зафиксирована');const r=p.rooms.find(r=>r.id===roomId)!;r.points.splice(edge+1,0,{id:uid(),x,z});const errors=validateArchitecture(p);if(errors.length)throw new Error(errors[0]);}
 
@@ -75,7 +100,7 @@ export function changeWallProfile(p:ProjectDocument,kind:'interior'|'exterior',p
   const shifts=new Map<string,Point>();
   for(const room of p.rooms){if(shifts.has(room.id))continue;shifts.set(room.id,{x:0,z:0});const queue=[room.id];
    while(queue.length){const id=queue.shift()!,s=shifts.get(id)!;
-    for(const wall of shared.filter(w=>w.roomIds.includes(id))){const forward=wall.roomIds[0]===id,other=wall.roomIds[forward?1:0];const sign=forward?1:-1,d=profile.width-wall.thickness;
+    for(const wall of shared.filter(w=>w.roomIds.includes(id))){const forward=wall.roomIds[0]===id,other=wall.roomIds[forward?1:0];const winding=Math.sign(signedArea(p.rooms.find(r=>r.id===wall.owners[0].roomId)!.points));const sign=(forward?1:-1)*winding,d=profile.width-wall.thickness;
      const target={x:s.x+sign*(wall.b.z-wall.a.z)/wall.length*d,z:s.z-sign*(wall.b.x-wall.a.x)/wall.length*d};const old=shifts.get(other);
      if(old&&distance(old,target)>EPS)throw new Error('Замкнутая цепочка комнат не позволяет изменить толщину без изменения размеров. Отсоедините одну комнату.');
      if(!old){shifts.set(other,target);queue.push(other);}

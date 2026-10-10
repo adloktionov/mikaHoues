@@ -3,7 +3,7 @@ import {computed,ref,shallowRef} from 'vue';
 import {createProject,clone,uid,duplicateVariant} from '../domain/project';
 import {History} from '../domain/history';
 import {Repository} from '../storage/database';
-import {deriveWalls,rectangle,validateArchitecture,openingErrors,bounds,attachRoom,moveSharedWall} from '../domain/geometry';
+import {deriveWalls,rectangle,validateArchitecture,openingErrors,bounds,attachRoom,moveSharedWall,reconcileOpenings} from '../domain/geometry';
 import type {ProjectDocument,AssetRecord} from '../domain/types';
 import {packProject,unpackProject,referencedAssets,download} from '../storage/archive';
 export const useEditor=defineStore('editor',()=>{
@@ -12,8 +12,8 @@ export const useEditor=defineStore('editor',()=>{
  const canUndo=ref(false),canRedo=ref(false),assets=shallowRef<AssetRecord[]>([]);let transition=0;let version=0,timer:ReturnType<typeof setTimeout>|undefined,saveQueue=Promise.resolve();
  const walls=computed(()=>deriveWalls(document.value));const variant=computed(()=>document.value.variants.find(v=>v.id===document.value.activeVariantId)!);const warnings=computed(()=>[...validateArchitecture(document.value),...openingErrors(document.value)]);
  const update=()=>{document.value=clone(history.current);canUndo.value=history.canUndo;canRedo.value=history.canRedo;dirty.value=true;saveLabel.value='Есть несохранённые изменения';clearTimeout(timer);timer=setTimeout(()=>void save(),800);};
- function edit(label:string,fn:(p:ProjectDocument)=>void){try{history.apply(label,p=>{fn(p);const errors=validateArchitecture(p);if(errors.length)throw new Error(errors[0]);});update();error.value='';return true;}catch(e){error.value=(e as Error).message;return false;}}
- function architectural(label:string,fn:(p:ProjectDocument)=>void){if(document.value.architectureLocked){error.value='Архитектура зафиксирована. Сначала снимите фиксацию.';return false;}return edit(label,fn);}
+ function edit(label:string,fn:(p:ProjectDocument)=>void){try{history.apply(label,p=>{fn(p);const errors=validateArchitecture(p);if(errors.length)throw new Error(errors[0]);});update();error.value='';return true;}catch(e){document.value=clone(history.current);error.value=(e as Error).message;return false;}}
+ function architectural(label:string,fn:(p:ProjectDocument)=>void){if(document.value.architectureLocked){document.value=clone(history.current);error.value='Архитектура зафиксирована. Сначала снимите фиксацию.';return false;}return edit(label,p=>{const before=clone(p);fn(p);reconcileOpenings(before,p);});}
  function save(){clearTimeout(timer);const snapshot=clone(document.value);saveQueue=saveQueue.then(async()=>{if(snapshot.id!==document.value.id)return;try{const savedVersion=await repository.save(snapshot,version);if(snapshot.id!==document.value.id)return;version=savedVersion;if(snapshot.revision===document.value.revision){dirty.value=false;saveLabel.value='Сохранено на этом устройстве';}}catch(e){if(snapshot.id!==document.value.id)return;dirty.value=true;error.value='Не удалось сохранить: '+(e as Error).message;saveLabel.value='Не сохранено — экспортируйте копию';}});return saveQueue;}
  async function init(){try{const all=await repository.list();if(all.length){const saved=await repository.load(all[0].id);if(saved){history=new History(saved.document);document.value=history.current;version=saved.version;saveLabel.value='Сохранено на этом устройстве';}}assets.value=await repository.db.assets.toArray();}catch(e){error.value='Не удалось открыть хранилище: '+(e as Error).message;}ready.value=true;}
  function transitionGuard(){const ticket=++transition,id=document.value.id,revision=document.value.revision;return ()=>ticket===transition&&document.value.id===id&&document.value.revision===revision;}
