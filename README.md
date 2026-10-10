@@ -39,7 +39,7 @@ npx playwright test --config playwright.production.config.ts
 - `ARCHITECTURE.md`, `DECISIONS.md`, `IMPLEMENTATION_PLAN.md` — архитектура, решения и план.
 - `project/`, `references/` — исходный ApartmentPlanner и его материалы.
 
-Подготовка публикации в `house.vue` и проверенные ограничения: [отчёт](docs/PUBLICATION.md), [Release QA](docs/RELEASE_QA.md).
+Подготовка публикации в `mikaHoues` и проверенные ограничения: [отчёт](docs/PUBLICATION.md), [Release QA](docs/RELEASE_QA.md).
 
 ---
 

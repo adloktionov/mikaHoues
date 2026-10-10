@@ -6,12 +6,11 @@
 
 - Рабочая папка: `/Users/michaelpilikian/Documents/Codex/2026-09-29/x20/mikaHoues`.
 - Ветка: `codex/house-planner-v1`.
-- Целевой репозиторий: https://github.com/adloktionov/house.vue.
-- Remote `house-vue`: `git@github.com:adloktionov/house.vue.git`.
-- Прежний `origin` сохранён: `git@github.com:adloktionov/mikaHoues.git`.
-- На момент проверки целевая ветка отсутствовала. У локальной истории и `house-vue/main` нет общего предка. Публикация выполняется отдельной веткой с полной исходной историей; `main` и `bin-packing-problem` сохраняются. Слияние историй в эту подготовку не входит.
+- Целевой репозиторий: https://github.com/adloktionov/mikaHoues.
+- Remote `origin`: `git@github.com:adloktionov/mikaHoues.git`.
+- После уточнения пользователя целевой репозиторий — mikaHoues. Целевая ветка отсутствует; `origin/main` (4c846f4) является предком текущей ветки. Публикация выполняется в `codex/house-planner-v1` с сохранением существующей истории; `main` не изменяется.
 - Перед подготовкой рабочее дерево было чистым, последний коммит реализации — `47f1b6d`.
-- Разрешение пользователя на обычный push в house.vue заменяет прежний запрет push для этой публикации. Перезапись истории и force push не разрешены.
+- Разрешение пользователя на обычный push в mikaHoues заменяет прежний запрет push для этой публикации. Перезапись истории и force push не разрешены.
 
 ## Выполненные проверки
 
@@ -26,4 +25,7 @@
 
 ## После публикации
 
-Сверить хеш `HEAD` с `refs/heads/codex/house-planner-v1` на GitHub и убедиться, что ветка отслеживает `house-vue/codex/house-planner-v1`, а рабочее дерево чистое. Сам запуск приложения описан в корневом README и `docs/USER_GUIDE.md`.
+Сверить хеш `HEAD` с `refs/heads/codex/house-planner-v1` на GitHub и убедиться, что ветка отслеживает `origin/codex/house-planner-v1`, а рабочее дерево чистое. Сам запуск приложения описан в корневом README и `docs/USER_GUIDE.md`.
+
+## Уточнение цели — 2026-10-10T08:10:36+03:00
+Предыдущая попытка push в house.vue была отклонена GitHub: нет права записи у pilikyan. Пользователь уточнил, что публикация должна выполняться в mikaHoues, где он коллаборатор. Сборка и исходный код после проверок не менялись; исправлена только документация.
